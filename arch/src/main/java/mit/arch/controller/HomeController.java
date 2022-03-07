@@ -1,4 +1,4 @@
-package mit.yang.arch;
+package mit.arch.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
