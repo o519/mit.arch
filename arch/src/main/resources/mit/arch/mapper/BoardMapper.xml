@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mit.arch.mapper.BoardMapper">
+
+<select id="getList" resultType="mit.arch.domain.BoardVO">
+	SELECT * FROM item
+</select>
+
+<insert id="insert">
+	INSERT INTO item(item_code, item_name, purch_user, purch_user_name, purch_dept, purch_dept_name, vendor, vendor_name, income_insp_user, current_stock, purch_price, insp_f, deletion_f)
+	VALUES(#{item_code}, #{item_name}, #{purch_user}, #{purch_user_name}, #{purch_dept}, #{purch_dept_name}, #{vendor}, #{vendor_name}, #{income_insp_user}, #{current_stock}, #{purch_price}, #{insp_f}, #{deletion_f})
+</insert>
+
+<select id="read" resultType="mit.arch.domain.BoardVO">
+	SELECT * FROM item where item_code = #{item_code}
+</select>
+
+<delete id="delete">
+	DELETE FROM item WHERE item_code = #{item_code}
+</delete>
+
+<update id="update">
+	UPDATE item SET item_code = #{item_code},
+					item_name = #{item_name},
+					purch_user = #{purch_user},
+					purch_user_name = #{purch_user_name},
+					purch_dept = #{purch_dept},
+					purch_dept_name = #{purch_dept_name},
+					vendor = #{vendor},
+					vendor_name = #{vendor_name},
+					income_insp_user = #{income_insp_user},
+					current_stock = #{current_stock},
+					purch_price = #{purch_price},
+					insp_f = #{insp_f},
+					deletion_f = #{deletion_f}
+					WHERE item_code = #{item_code}
+</update>
+</mapper>

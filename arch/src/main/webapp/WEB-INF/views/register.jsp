@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!doctype html>
 <html>
   <head>
@@ -163,6 +166,29 @@
 		    </tr>
 		  </thead>
 		  <tbody>
+		  <c:forEach items="${register}" var="board">
+		  	<c:set var="i" value="${i+1}"/>
+			<tr>
+				<td>${i}</td>
+				<td></td>
+				<td>${board.item_code}</td>
+				<td>${board.item_name}</td>
+				<td>${board.purch_user}</td>
+				<td>${board.purch_user_name}</td>
+				<td>${board.purch_dept}</td>
+				<td>${board.purch_dept_name}</td>
+				<td>${board.vendor}</td>
+				<td>${board.vendor_name}</td>
+				<td>${board.income_insp_user}</td>
+				<td>${board.current_stock}</td>
+				<td>${board.purch_price}</td>
+				<td>${board.insp_f}</td>
+				<td>${board.deletion_f}</td>
+			</tr>
+		  </c:forEach>
+		  
+		  
+		 <!--  <tbody>
 		    <tr>
 		      <th scope="row">1</th>
 		      <td>Mark</td>
@@ -197,23 +223,7 @@
 		      <td>@fat</td>
 		      <td>@fat</td>
 		    </tr>
-		    <tr>
-		      <th scope="row">3</th>
-		      <td>Larry</td>
-		      <td>the Bird</td>
-		      <td>@twitter</td>
-		      <td>@twitter</td>
-		      <td>@twitter</td>
-		      <td>@twitter</td>
-		      <td>@twitter</td>
-		      <td>@twitter</td>
-		      <td>@twitter</td>
-		      <td>@twitter</td>
-		      <td>@twitter</td>
-		      <td>@twitter</td>
-		      <td>@twitter</td>
-		      <td>@twitter</td>
-		    </tr>
+		  </tbody> -->
 		  </tbody>
 		</table>
 	</div>
