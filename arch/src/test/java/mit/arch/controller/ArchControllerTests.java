@@ -37,5 +37,10 @@ public class ArchControllerTests {
 				.getModelAndView()
 				.getModelMap());
 	}
+	
+	@Test
+	public void testRegister1() throws Exception {
+		log.info(mocMvc.perform(MockMvcRequestBuilders.post("/register1").param("item_code", "아이템코드테스트")).andReturn().getModelAndView().getViewName());
+	}
 
 }

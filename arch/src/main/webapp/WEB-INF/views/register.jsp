@@ -72,74 +72,76 @@
 	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	</div>
 	
+	<form action="/register" method="post">
 	<div style="width: 100%; height: 30px;">
 		<div class="top_left" style="float: left;">
 			<b>검사자재등록</b>
 		</div>
 		<div class="top_right" style="float: right; display: table-cell; vertical-align: middle;">
-			<button type="button" class="btn btn-outline-primary btn-sm">추가</button>
+			<button type="submit" class="btn btn-outline-primary btn-sm">추가</button>
+			<button type="button" class="btn btn-outline-primary btn-sm">수정</button>
 			<button type="button" class="btn btn-outline-primary btn-sm">삭제</button>
 		</div>
 	</div>
-	
 	<div class="input-group input-group-sm mb-1">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">자재코드</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="item_code" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">자재명</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="item_name"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">구매자</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="purch_user"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">구매자명</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="purch_user_name"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">구매부서</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="purch_dept"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	</div>
 	<div class="input-group input-group-sm mb-1">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">구매부서명</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="purch_dept_name"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">구매업체</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="vendor"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">구매업체명</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="vendor_name"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">수입검사자</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="income_insp_user"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">현재고</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="current_stock"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	</div>
 	<div class="input-group input-group-sm mb-5" style="width: 60%">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">구매단가</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="purch_price"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">검사여부</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="insp_f"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">폐기여부</span>
 	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="deletion_f"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	</div>
+	</form>
 	
 	
 	
