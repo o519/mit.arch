@@ -17,8 +17,9 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper mapper;
 
 	@Override
-	public void register(BoardVO board) {
+	public int register(BoardVO board) {
 		// TODO Auto-generated method stub
+		return mapper.insert(board);
 
 	}
 
@@ -35,15 +36,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public boolean modify(BoardVO board) {
+	public int modify(BoardVO board) {
 		log.info("modify" + board);
-		return mapper.update(board) == 1;
+		return mapper.update(board);
 	}
 
 	@Override
-	public boolean remove(String item_code) {
+	public int remove(String item_code) {
 		log.info("remove" + item_code);
-		return mapper.delete(item_code) == 1;
+		return mapper.delete(item_code);
 	}
 
 

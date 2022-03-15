@@ -20,17 +20,16 @@ public class ArchController {
 	private BoardService service;
 
 	 @GetMapping("/register")
-	 @ResponseBody	 
+	 //@ResponseBody	 
 	 public void register(Model model) {
 		 model.addAttribute("register", service.getList());
 	 }
 
-
-	@PostMapping("/register")
-	public void register(BoardVO board, RedirectAttributes rttr) {
-		log.info("register: " + board);
-		service.register(board);
-		rttr.addFlashAttribute("result", board.getItem_code());
-	}
+		/*
+		 * @PostMapping("/register") public void register(BoardVO board,
+		 * RedirectAttributes rttr) { log.info("register: " + board);
+		 * service.register(board); rttr.addFlashAttribute("result",
+		 * board.getItem_code()); }
+		 */
 
 }

@@ -11,7 +11,9 @@ public interface BoardMapper {
 	//@Select("SELECT * FROM item")
 	public List<BoardVO> getList();
 	
-	public void insert(BoardVO board);
+	public int insert(BoardVO board);
+	
+	public BoardVO board(String item_code);
 	
 	public void insertSelectKey(BoardVO board);
 	

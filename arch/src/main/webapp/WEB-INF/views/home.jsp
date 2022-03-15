@@ -12,6 +12,7 @@
 <P>  The time on the server is ${serverTime}. </P>
 
 <script>
+location.href='/register'
 </script>
 </body>
 </html>
