@@ -20,29 +20,30 @@ import mit.arch.service.BoardService;
 @RestController
 @Log4j
 @AllArgsConstructor
-public class ReController {
+public class ItemController {
 	
 	private BoardService service;
 	
-	@PostMapping(value="/new",
+	@PostMapping(value="/item",
 			consumes = "application/json",
 			produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> register(@RequestBody BoardVO board) {
 	
 		int insertCount = service.register(board);
+		log.info("등록 처리결과"+insertCount);
 		
 		return insertCount == 1
 		? new ResponseEntity<>("success", HttpStatus.OK)
 		:new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@GetMapping(value = "/{item_code}",
+	@GetMapping(value = "/item/{item_code}",
 			produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
-	public ResponseEntity<BoardVO> get(@PathVariable("item_code")String item_code){
-		return new ResponseEntity<>(service.get(item_code),HttpStatus.OK);
+	public ResponseEntity<BoardVO> get(@PathVariable("item_code") String item_code){
+		return new ResponseEntity<>(service.get(item_code), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(value = "/{item_code}", produces = {MediaType.TEXT_PLAIN_VALUE})
+	@DeleteMapping(value = "/item/{item_code}", produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> remove(@PathVariable("item_code") String item_code){
 		return service.remove(item_code) == 1
 				? new ResponseEntity<>("success", HttpStatus.OK)
@@ -50,7 +51,7 @@ public class ReController {
 	}
 	
 	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH},
-			value = "/{item_code}", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+			value = "/item/{item_code}", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> modify(
 			@RequestBody BoardVO board,
 			@PathVariable("item_code") String item_code){

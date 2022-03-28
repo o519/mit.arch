@@ -14,8 +14,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 	<link rel="stylesheet" href="/resources/css/style.css">
-	<script type="text/javascript" src="/resources/js/register.js"></script>
-    <title>Hello, world!</title>
+	<script type="text/javascript" src="/resources/js/material.js"></script>
+    <title>품질관리 > 기준정보 > 검사자재등록</title>
   </head>
   <body>
     
@@ -32,7 +32,33 @@
 				<a class="nav-link" href="#">구매자재</a>
 				<a class="nav-link" href="#">생산관리</a>
 				<a class="nav-link" href="#">공정관리</a>
-				<a class="nav-link active" href="/register">품질관리<span class="sr-only">(current)</span></a>
+			 	<li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+			          	품질관리
+			        </a>
+			        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+			          <li>&nbsp;&nbsp;<b>수입검사</span></b></li>
+			          <li><a class="dropdown-item" href="#">수입검사등록*</a></li>
+			          <li><a class="dropdown-item" href="#">수입검사현황*</a></li>
+			          <li><a class="dropdown-item" href="#">수입검사분석*</a></li>
+			          <li><hr class="dropdown-divider"></li>
+			          <li>&nbsp;&nbsp;<b>공정품질</span></b></li>
+			          <li><a class="dropdown-item" href="#">공정검사등록</a></li>
+			          <li><a class="dropdown-item" href="#">입고검사등록</a></li>
+			          <li><a class="dropdown-item" href="#">수리현황*</a></li>
+			          <li><a class="dropdown-item" href="#">품질PPM현황*</a></li>
+			          <li><a class="dropdown-item" href="#">출하검사등록*</a></li>
+			          <li><hr class="dropdown-divider"></li>
+			          <li>&nbsp;&nbsp;<b>검사성적서</span></b></li>
+			          <li><a class="dropdown-item" href="#">검사성적서*</a></li>
+			          <li><hr class="dropdown-divider"></li>
+			          <li>&nbsp;&nbsp;<b>기준정보</span></b></li>
+			          <li><a class="dropdown-item" href="#">검사항목관리*</a></li>
+			          <li><a class="dropdown-item" href="#">검사표준관리*</a></li>
+			          <li><a class="dropdown-item" href="/material">검사자재등록</a></li>
+			          <li><a class="dropdown-item" href="/characteristics">검사항목등록</a></li>
+			        </ul>
+		      	</li>
 				<a class="nav-link" href="#">예산관리</a>
 				<a class="nav-link" href="#">회계관리</a>
 				<a class="nav-link" href="#">인사관리</a>
@@ -170,10 +196,10 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		  <c:forEach items="${register}" var="board">
+		  <c:forEach items="${material}" var="board">
 		  	<c:set var="i" value="${i+1}"/>
 			<tr>
-				<td><input type="checkbox" name='check' value='dog' onclick='getCheckboxValue(event)'/></td>
+				<td><input type="checkbox" name='chkbox' value='' onclick='getCheckboxValue(event)'/></td>
 				<td>${i}</td>
 				<td></td>
 				<td>${board.item_code}</td>
@@ -191,47 +217,6 @@
 				<td>${board.deletion_f}</td>
 			</tr>
 		  </c:forEach>
-		  <div class="col-lg-12" id="ex1_Result1" ></div> 
-          <div class="col-lg-12" id="ex1_Result2" ></div> 
-
-
-		  
-		 <!--  <tbody>
-		    <tr>
-		      <th scope="row">1</th>
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td>@mdo</td>
-		      <td>@mdo</td>
-		      <td>@mdo</td>
-		      <td>@mdo</td>
-		      <td>@mdo</td>
-		      <td>@mdo</td>
-		      <td>@mdo</td>
-		      <td>@mdo</td>
-		      <td>@mdo</td>
-		      <td>@mdo</td>
-		      <td>@mdo</td>
-		      <td>@mdo</td>
-		    </tr>
-		    <tr>
-		      <th scope="row">2</th>
-		      <td>Jacob</td>
-		      <td>Thornton</td>
-		      <td>@fat</td>
-		      <td>@fat</td>
-		      <td>@fat</td>
-		      <td>@fat</td>
-		      <td>@fat</td>
-		      <td>@fat</td>
-		      <td>@fat</td>
-		      <td>@fat</td>
-		      <td>@fat</td>
-		      <td>@fat</td>
-		      <td>@fat</td>
-		      <td>@fat</td>
-		    </tr>
-		  </tbody> -->
 		  </tbody>
 		</table>
 	</div>
@@ -239,16 +224,13 @@
 	
 
     <!-- Optional JavaScript; choose one of the two! -->
-
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 <!--     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 	
-	<script>
-		
-	console.log("--------------------------------------------------");
 	
+	<script>
 	$(document).ready(function(){
 
 		var operForm = $("#operForm");
@@ -256,7 +238,6 @@
 			registerService.remove(
 					{
 						item_code:$('input[name=item_code]').val(),
-
 					}
 					,
 					function(result){
@@ -264,12 +245,25 @@
 						location.reload(true);
 					}
 			);
-			location.reload();
 		});
 		
 		$("button[data-oper='register']").on("click", function(e){
 			registerService.add(
 					{
+						/* item_code:$('input[name=item_code]').val().trim(),
+						item_name:$('input[name=item_name]').val().trim(),
+						purch_user:$('input[name=purch_user]').val().trim(),
+						purch_user_name:$('input[name=purch_user_name]').val().trim(),
+						purch_dept:$('input[name=purch_dept]').val().trim(),
+						purch_dept_name:$('input[name=purch_dept_name]').val().trim(),
+						vendor:$('input[name=vendor]').val().trim(),
+						vendor_name:$('input[name=vendor_name]').val().trim(),
+						income_insp_user:$('input[name=income_insp_user]').val().trim(),
+						current_stock:$('input[name=current_stock]').val().trim(),
+						purch_price:$('input[name=purch_price]').val().trim(),
+						insp_f:$('input[name=insp_f]').val().trim(),
+						deletion_f:$('input[name=deletion_f]').val().trim() */
+						
 						item_code:$('input[name=item_code]').val(),
 						item_name:$('input[name=item_name]').val(),
 						purch_user:$('input[name=purch_user]').val(),
@@ -290,7 +284,6 @@
 						location.reload(true);
 					}
 			);
-			location.reload();
 		});
 		$("button[data-oper='modify']").on("click", function(e){
 			registerService.update(
@@ -318,12 +311,23 @@
 		});
 	});
 	
-		
-/* 	$("checkbox").on("click", function(e){
-		console.log();
-	}); */
-	
-	
+	$(document).keydown(function(event) {
+	    if ( event.keyCode == 46 || event.which == 46 ) {
+	    	
+	    	var con_test = confirm("삭제하시겠습니까?");
+	    	if(con_test == true){
+	    		registerService.remove(
+						{
+							item_code:$('input[name=item_code]').val(),
+						}
+						,
+						function(result){
+							location.reload(true);
+						}
+				);
+	    	}
+	    }
+	});
 	
 	$("#table01 tr").click(function(){     
 		 
@@ -358,12 +362,13 @@
     });
 
 	</script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
+	
+	<!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
     -->
+
   </body>
 </html>

@@ -1,5 +1,3 @@
-console.log("테스트");
-
 function checkSelectAll()  {
   // 전체 체크박스
   const checkboxes 
@@ -17,7 +15,7 @@ function checkSelectAll()  {
     selectAll.checked = false;
   }
 
-}
+};
 
 function getCheckboxValue(event)  {
   let result = '';
@@ -29,7 +27,7 @@ function getCheckboxValue(event)  {
   
   document.getElementById('result').innerText
     = result;
-}
+};
 
 function selectAll(selectAll)  {
   const checkboxes 
@@ -38,13 +36,13 @@ function selectAll(selectAll)  {
   checkboxes.forEach((checkbox) => {
     checkbox.checked = selectAll.checked
   })
-}
+};
 
 var registerService = (function() {
 	function remove(register, callback, error) {
 		$.ajax({
 			type : 'delete',
-			url : '/' + register.item_code,
+			url : '/insp_char/' + register.insp_char,
 			success : function(deleteResult, status, xhr) {
 				if(callback) {
 					callback(deleteResult);
@@ -62,7 +60,7 @@ var registerService = (function() {
 		console.log("등록"+JSON.stringify(register));
 		$.ajax({
 			type : 'put',
-			url : '/' + register.item_code,
+			url : '/insp_char/' + register.insp_char,
 			data : JSON.stringify(register),
 			contentType : "application/json; charset=utf-8",
 			success : function(result, status, xhr) {
@@ -79,11 +77,9 @@ var registerService = (function() {
 	}
 
 	function add(register, callback, error) {
-		
-	 		
 		$.ajax({
 	 		type : 'post',
-			url : '/new',
+			url : '/insp_char',
 			data : JSON.stringify(register),
 			contentType : "application/json; charset=utf-8",
 			success : function(result, status, xhr) {
@@ -92,6 +88,8 @@ var registerService = (function() {
 				}
 			},
 			error : function(xhr, status, er) {
+				console.log("등록에러");
+				alert("에러");
 				if (error) {
 					error(er);
 				}
@@ -101,6 +99,6 @@ var registerService = (function() {
  	return {
  		add:add,
  		update:update,
- 		remove:remove,
+ 		remove:remove
 	};
  })();

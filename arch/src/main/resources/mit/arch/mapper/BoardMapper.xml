@@ -3,16 +3,75 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <settings> 
+<setting value="INTEGER" name="jdbcTypeForNull"> 
+</settings> -->
 <mapper namespace="mit.arch.mapper.BoardMapper">
 
+
 <select id="getList" resultType="mit.arch.domain.BoardVO">
-	SELECT * FROM item
+	SELECT * FROM item ORDER BY item_code
 </select>
 
 <insert id="insert">
 	INSERT INTO item(item_code, item_name, purch_user, purch_user_name, purch_dept, purch_dept_name, vendor, vendor_name, income_insp_user, current_stock, purch_price, insp_f, deletion_f)
-	VALUES(#{item_code}, #{item_name}, #{purch_user}, #{purch_user_name}, #{purch_dept}, #{purch_dept_name}, #{vendor}, #{vendor_name}, #{income_insp_user}, #{current_stock}, #{purch_price}, #{insp_f}, #{deletion_f})
+	VALUES(#{item_code}, #{item_name}, #{purch_user}, #{purch_user_name}, #{purch_dept}, #{purch_dept_name}, #{vendor}, #{vendor_name}, #{income_insp_user}, #{current_stock, jdbcType=INTEGER}, #{purch_price, jdbcType=INTEGER}, #{insp_f}, #{deletion_f})
 </insert>
+
+<!-- <insert id="insert">
+	INSERT INTO item
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="item_code != null">item_code,</if>
+			<if test="item_name != null">item_name,</if>
+			<if test="purch_user != null">purch_user,</if>
+			<if test="purch_user_name != null">purch_user_name,</if>
+			<if test="purch_dept != null">purch_dept,</if>
+			<if test="purch_dept_name != null">purch_dept_name,</if>
+			<if test="vendor != null">vendor,</if>
+			<if test="vendor_name != null">vendor_name,</if>
+			<if test="income_insp_user != null">income_insp_user,</if>
+			<if test="current_stock != null">current_stock,</if>
+			<if test="purch_price != null">purch_price,</if>
+			<if test="insp_f != null">insp_f,</if>
+			<if test="deletion_f != null">deletion_f,</if>
+		</trim>
+	VALUES
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="item_code != null">#{item_code},</if>
+			<if test="item_name != null">#{item_name},</if>
+			<if test="purch_user != null">#{purch_user},</if>
+			<if test="purch_user_name != null">#{purch_user_name},</if>
+			<if test="purch_dept != null">#{purch_dept},</if>
+			<if test="purch_dept_name != null">#{purch_dept_name},</if>
+			<if test="vendor != null">#{vendor},</if>
+			<if test="vendor_name != null">#{vendor_name},</if>
+			<if test="income_insp_user != null">#{income_insp_user},</if>
+			<if test="current_stock != null">#{current_stock},</if>
+			<if test="purch_price != null">#{purch_price},</if>
+			<if test="insp_f != null">#{insp_f},</if>
+			<if test="deletion_f != null">#{deletion_f}</if>
+		</trim>
+</insert> -->
+
+<update id="update">
+	UPDATE item
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="item_code != null">item_code = #{item_code},</if>
+			<if test="item_name != null">item_name = #{item_name},</if>
+			<if test="purch_user != null">purch_user = #{purch_user},</if>
+			<if test="purch_user_name != null">purch_user_name = #{purch_user_name},</if>
+			<if test="purch_dept != null">purch_dept = #{purch_dept},</if>
+			<if test="purch_dept_name != null">purch_dept_name = #{purch_dept_name},</if>
+			<if test="vendor != null">vendor = #{vendor},</if>
+			<if test="vendor_name != null">vendor_name = #{vendor_name},</if>
+			<if test="income_insp_user != null">income_insp_user = #{income_insp_user},</if>
+			<if test="current_stock != null">current_stock = #{current_stock},</if>
+			<if test="purch_price != null">purch_price = #{purch_price},</if>
+			<if test="insp_f != null">insp_f = #{insp_f},</if>
+			<if test="deletion_f != null">deletion_f = #{deletion_f},</if>
+		</trim>
+	WHERE item_code = #{item_code}
+</update>
 
 <select id="read" resultType="mit.arch.domain.BoardVO">
 	SELECT * FROM item where item_code = #{item_code}
@@ -22,7 +81,9 @@
 	DELETE FROM item WHERE item_code = #{item_code}
 </delete>
 
-<update id="update">
+
+
+<!-- <update id="update">
 	UPDATE item SET item_code = #{item_code},
 					item_name = #{item_name},
 					purch_user = #{purch_user},
@@ -37,5 +98,5 @@
 					insp_f = #{insp_f},
 					deletion_f = #{deletion_f}
 					WHERE item_code = #{item_code}
-</update>
+</update> -->
 </mapper>

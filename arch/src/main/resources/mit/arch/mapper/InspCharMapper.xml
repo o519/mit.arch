@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <settings> 
+<setting value="INTEGER" name="jdbcTypeForNull"> 
+</settings> -->
+<mapper namespace="mit.arch.mapper.InspCharMapper">
+
+<select id="getList" resultType="mit.arch.domain.InspCharVO">
+	SELECT * FROM inspection_characteristics ORDER BY insp_char
+</select>
+
+<delete id="delete">
+	DELETE FROM inspection_characteristics WHERE insp_char = #{insp_char}
+</delete>
+
+<update id="update">
+	UPDATE inspection_characteristics SET
+										insp_char = #{insp_char},
+										insp_char_name = #{insp_char_name},
+										qn_f = #{qn_f},
+										sample_qty = #{sample_qty},
+										AC = #{AC},
+										RE = #{RE},
+										USL = #{USL},
+										SL = #{SL},
+										LSL = #{LSL},
+										UCL = #{UCL},
+										CL = #{CL},
+										LCL = #{LCL},
+										unit = #{unit},
+										create_user = #{create_user},
+										create_date = #{create_date},
+										update_user = #{update_user},
+										update_date = #{update_date},
+										delete_user = #{delete_user},
+										delete_date = #{delete_date},
+										deletion_f = #{deletion_f}
+										WHERE insp_char = #{insp_char}
+</update>
+<insert id="insert">
+	INSERT INTO inspection_characteristics(insp_char, insp_char_name, qn_f, sample_qty, AC, RE, USL, SL, LSL, UCL, CL, LCL, unit, create_date, update_date, delete_date, deletion_f)
+	VALUES(#{insp_char}, #{insp_char_name}, #{qn_f}, #{sample_qty, jdbcType=INTEGER}, #{AC, jdbcType=INTEGER}, #{RE, jdbcType=INTEGER}, #{USL, jdbcType=DOUBLE}, #{SL, jdbcType=DOUBLE}, #{LSL, jdbcType=DOUBLE}, #{UCL, jdbcType=DOUBLE}, #{CL, jdbcType=DOUBLE}, #{LCL, jdbcType=DOUBLE}, #{unit}, #{create_date, jdbcType=DATE}, #{update_date, jdbcType=DATE}, #{delete_date, jdbcType=DATE}, #{deletion_f})
+</insert>
+
+<select id="read" resultType="mit.arch.domain.InspCharVO">
+	SELECT * FROM inspection_characteristics where insp_char = #{insp_char}
+</select>
+
+</mapper>
