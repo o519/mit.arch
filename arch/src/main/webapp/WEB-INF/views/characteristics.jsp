@@ -1,71 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+    
+<%@ include file="./includes/header.jsp" %>
+<script type="text/javascript" src="/resources/js/characteristics.js"></script>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<!doctype html>
-<html>
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-	<link rel="stylesheet" href="/resources/css/style.css">
-	<script type="text/javascript" src="/resources/js/characteristics.js"></script>
-
-    <title>품질관리 > 기준정보 > 검사항목등록</title>
-  </head>
-  <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<a class="navbar-brand" href="#">ArchMES</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-			<div class="navbar-nav">
-				<a class="nav-link" href="#">종합화면 <span class="sr-only">(current)</span></a>
-				<a class="nav-link" href="#">연구개발</a>
-				<a class="nav-link" href="#">영업관리</a>
-				<a class="nav-link" href="#">구매자재</a>
-				<a class="nav-link" href="#">생산관리</a>
-				<a class="nav-link" href="#">공정관리</a>
-			 	<li class="nav-item dropdown">
-			        <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-			          	품질관리
-			        </a>
-			        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-			          <li>&nbsp;&nbsp;<b>수입검사</span></b></li>
-			          <li><a class="dropdown-item" href="#">수입검사등록*</a></li>
-			          <li><a class="dropdown-item" href="#">수입검사현황*</a></li>
-			          <li><a class="dropdown-item" href="#">수입검사분석*</a></li>
-			          <li><hr class="dropdown-divider"></li>
-			          <li>&nbsp;&nbsp;<b>공정품질</span></b></li>
-			          <li><a class="dropdown-item" href="#">공정검사등록</a></li>
-			          <li><a class="dropdown-item" href="#">입고검사등록</a></li>
-			          <li><a class="dropdown-item" href="#">수리현황*</a></li>
-			          <li><a class="dropdown-item" href="#">품질PPM현황*</a></li>
-			          <li><a class="dropdown-item" href="#">출하검사등록*</a></li>
-			          <li><hr class="dropdown-divider"></li>
-			          <li>&nbsp;&nbsp;<b>검사성적서</span></b></li>
-			          <li><a class="dropdown-item" href="#">검사성적서*</a></li>
-			          <li><hr class="dropdown-divider"></li>
-			          <li>&nbsp;&nbsp;<b>기준정보</span></b></li>
-			          <li><a class="dropdown-item" href="#">검사항목관리*</a></li>
-			          <li><a class="dropdown-item" href="#">검사표준관리*</a></li>
-			          <li><a class="dropdown-item" href="/material">검사자재등록</a></li>
-			          <li><a class="dropdown-item" href="characteristics">검사항목등록</a></li>
-			        </ul>
-		      	</li>
-				<a class="nav-link" href="#">예산관리</a>
-				<a class="nav-link" href="#">회계관리</a>
-				<a class="nav-link" href="#">인사관리</a>
-				<a class="nav-link" href="#">급여관리</a>
-			</div>
-		</div>
-	</nav>
 	<div style="width: 100%; height: 30px;">
 		<div class="top_left" style="float: left;">
 		<b>검사항목등록: Qco9020</b>
@@ -127,37 +67,37 @@
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">AC값</span>
 	  </div>
-	  <input name="AC"  type="text" id="AC" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="ac"  type="text" id="ac" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">RE값</span>
 	  </div>
-	  <input name="RE"  type="text" id="RE" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="re"  type="text" id="re" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	</div>
 	<div class="input-group input-group-sm mb-1">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">USL</span>
 	  </div>
-	  <input name="USL"  type="text" id="USL" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="usl"  type="text" id="usl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">SL</span>
 	  </div>
-	  <input name="SL"  type="text" id="SL" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="sl"  type="text" id="sl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">LSL</span>
 	  </div>
-	  <input name="LSL"  id="LSL" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="lsl"  id="lsl" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">UCL</span>
 	  </div>
-	  <input name="UCL"  type="text" id="UCL" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="ucl"  type="text" id="ucl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">CL</span>
 	  </div>
-	  <input name="CL"  type="text" id="CL" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="cl"  type="text" id="cl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	  <div class="input-group-prepend">
 	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">LCL</span>
 	  </div>
-	  <input name="LCL"  type="text" id="LCL" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  <input name="lcl"  type="text" id="lcl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 	</div>
 	<div class="input-group input-group-sm mb-1" style="width: 83.4%">
 	  <div class="input-group-prepend">
@@ -237,32 +177,32 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		  <c:forEach items="${characteristics}" var="insp_char">
+		  <c:forEach items="${characteristics}" var="insp">
 		  	<c:set var="i" value="${i+1}"/>
 			<tr>
 				<td><input type="checkbox" name='chkbox' value='' onclick='getCheckboxValue(event)'/></td>
 				<td>${i}</td>
 				<td></td>
-				<td>${insp_char.insp_char}</td>
-				<td>${insp_char.insp_char_name}</td>
-				<td>${insp_char.qn_f}</td>
-				<td>${insp_char.sample_qty}</td>
-				<td>${insp_char.AC}</td>
-				<td>${insp_char.RE}</td>
-				<td>${insp_char.USL}</td>
-				<td>${insp_char.SL}</td>
-				<td>${insp_char.LSL}</td>
-				<td>${insp_char.UCL}</td>
-				<td>${insp_char.CL}</td>
-				<td>${insp_char.LCL}</td>
-				<td>${insp_char.unit}</td>
-				<td>${insp_char.create_user}</td>
-				<td>${insp_char.create_date}</td>
-				<td>${insp_char.update_user}</td>
-				<td>${insp_char.update_date}</td>
-				<td>${insp_char.delete_user}</td>
-				<td>${insp_char.delete_date}</td>
-				<td>${insp_char.deletion_f}</td>
+				<td>${insp.insp_char}</td>
+				<td>${insp.insp_char_name}</td>
+				<td>${insp.qn_f}</td>
+				<td>${insp.sample_qty}</td>
+				<td>${insp.ac}</td>
+				<td>${insp.re}</td>
+				<td>${insp.usl}</td>
+				<td>${insp.sl}</td>
+				<td>${insp.lsl}</td>
+				<td>${insp.ucl}</td>
+				<td>${insp.cl}</td>
+				<td>${insp.lcl}</td>
+				<td>${insp.unit}</td>
+				<td>${insp.create_user}</td>
+				<td>${insp.create_date}</td>
+				<td>${insp.update_user}</td>
+				<td>${insp.update_date}</td>
+				<td>${insp.delete_user}</td>
+				<td>${insp.delete_date}</td>
+				<td>${insp.deletion_f}</td>
 			</tr>
 		  </c:forEach>
 		  </tbody>
@@ -277,96 +217,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 	<script>
-	const inputs = document.querySelectorAll("input");
-	const total = inputs.length;
-	
-	const cols = 6; // 컬럼수
-	//const rows = Math.ceil(total/cols); // 줄수
-	
-	function keyevent(event) {
-		const keycode = event.keyCode;
-		const idx = Array.from(document.querySelectorAll('input')).indexOf(event.target);
-		
-		switch (keycode) {
-			case (13) : // Enter
-				if(idx===(total-1)){ //enter
-					//alert("폼 전송");
-				}else{
-					document.querySelectorAll('input')[idx+1].focus();
-				}
-				break;
-				
-	/* 		case(33) : // PageUp
-				document.querySelectorAll('input')[0].focus();
-				break;
-			
-			case(34) : // PageDown
-				document.querySelectorAll('input')[total-1].focus();
-				break; */
-			
-			case(37) : // Left
-				if(idx===0){
-					return false;
-				}else{
-					document.querySelectorAll('input')[idx-1].focus();
-				}
-				break;
-				
-			case(33) : // Up
-				if(idx < cols){
-					return false;
-				}else{
-					document.querySelectorAll('input')[idx-cols].focus();
-				}
-				break;
-				
-			case(39) : // Right
-				if(idx===(total-1)){
-					return false;
-				}else{
-					document.querySelectorAll('input')[idx+1].focus();
-				}
-				break;
-				
-			case (34) : // Down
-				if(idx+cols >= total){
-					return false;
-				}else{
-					document.querySelectorAll('input')[idx+cols].focus();
-				}
-				break;
-			default :
-				return false;
-				break;
-		}
-	}
-	
-	function formCheck(e) {
-		// 문제가 있으면
-		// e.preventDefault();
-	}
-	
-	document.querySelector("form").addEventListener('submit', formCheck);
-	for(const item of inputs) {
-		item.addEventListener('keydown', keyevent);
-	}
-	</script>
-	<script>
 	$(document).ready(function(){
 		$('#qn_f').change(function() {
 			var result = $('#qn_f option:selected').val();
 			if (result == '정성') {
-				$('#AC').attr("disabled",true).attr("readonly",false);
-				$('#RE').attr("disabled",true).attr("readonly",false);
-				$('#USL').attr("disabled",false).attr("readonly",false);
-				$('#SL').attr("disabled",false).attr("readonly",false);
-				$('#LSL').attr("disabled",false).attr("readonly",false);
+				$('#ac').attr("disabled",true).attr("readonly",false).val('');
+				$('#re').attr("disabled",true).attr("readonly",false).val('');
+				$('#usl').attr("disabled",false).attr("readonly",false);
+				$('#sl').attr("disabled",false).attr("readonly",false);
+				$('#lsl').attr("disabled",false).attr("readonly",false);
 			} else {
-				$('#USL').attr("disabled",true).attr("readonly",false);
-				$('#SL').attr("disabled",true).attr("readonly",false);
-				$('#LSL').attr("disabled",true).attr("readonly",false);
-				$("#AC").attr("disabled",false).attr("readonly",false); //입력가능
-				$("#RE").attr("disabled",false).attr("readonly",false); //입력가능
+				$('#usl').attr("disabled",true).attr("readonly",false).val('');
+				$('#sl').attr("disabled",true).attr("readonly",false).val('');
+				$('#lsl').attr("disabled",true).attr("readonly",false).val('');
+				$("#ac").attr("disabled",false).attr("readonly",false); //입력가능
+				$("#re").attr("disabled",false).attr("readonly",false); //입력가능
 			}
 		});
 		var operForm = $("#operForm");
@@ -375,17 +240,6 @@
 			for(var i=checkRows.length-1; i>-1; i--){
 				checkRows.eq(i).closest('tr').remove();
 			}
-			/* registerService.remove(
-					{
-						item_code:$('input[name=item_code]').val(),
-
-					}
-					,
-					function(result){
-						alert("결과" + result);
-						location.reload(true);
-					}
-			); */
 		});
 		$("button[data-oper='register']").on("click", function(e){
 			registerService.add(
@@ -394,37 +248,19 @@
 						insp_char_name:$('input[name=insp_char_name]').val(),
 						qn_f:$('select[name=qn_f]').val(),
 						sample_qty:$('input[name=sample_qty]').val(),
-						AC:$('input[name=AC]').val(),
-						RE:$('input[name=RE]').val(),
-						USL:$('input[name=USL]').val(),
-						SL:$('input[name=SL]').val(),
-						LSL:$('input[name=LSL]').val(),
-						UCL:$('input[name=UCL]').val(),
-						CL:$('input[name=CL]').val(),
-						LCL:$('input[name=LCL]').val(),
+						ac:$('input[name=ac]').val(),
+						re:$('input[name=re]').val(),
+						usl:$('input[name=usl]').val(),
+						sl:$('input[name=sl]').val(),
+						lsl:$('input[name=lsl]').val(),
+						ucl:$('input[name=ucl]').val(),
+						cl:$('input[name=cl]').val(),
+						lcl:$('input[name=lcl]').val(),
 						unit:$('select[name=unit]').val(),
 						create_date:$('input[name=create_date]').val(),
 						update_date:$('input[name=update_date]').val(),
 						delete_date:$('input[name=delete_date]').val(),
 						deletion_f:$('select[name=deletion_f]').val()
-						
-						/* insp_char:$('input[name=insp_char]').val().trim(),
-						insp_char_name:$('input[name=insp_char_name]').val().trim(),
-						qn_f:$('select[name=qn_f]').val().trim(),
-						sample_qty:$('input[name=sample_qty]').val().trim(),
-						AC:$('input[name=AC]').val().trim(),
-						RE:$('input[name=RE]').val().trim(),
-						USL:$('input[name=USL]').val().trim(),
-						SL:$('input[name=SL]').val().trim(),
-						LSL:$('input[name=LSL]').val().trim(),
-						UCL:$('input[name=UCL]').val().trim(),
-						CL:$('input[name=CL]').val().trim(),
-						LCL:$('input[name=LCL]').val().trim(),
-						unit:$('select[name=unit]').val().trim(),
-						create_date:$('input[name=create_date]').val().trim(),
-						update_date:$('input[name=update_date]').val().trim(),
-						delete_date:$('input[name=delete_date]').val().trim(),
-						deletion_f:$('select[name=deletion_f]').val().trim() */
 					}
 					,
 					function(result){
@@ -436,19 +272,23 @@
 		$("button[data-oper='modify']").on("click", function(e){
 			registerService.update(
 					{
-						item_code:$('input[name=item_code]').val(),
-						item_name:$('input[name=item_name]').val(),
-						purch_user:$('input[name=purch_user]').val(),
-						purch_user_name:$('input[name=purch_user_name]').val(),
-						purch_dept:$('input[name=purch_dept]').val(),
-						purch_dept_name:$('input[name=purch_dept_name]').val(),
-						vendor:$('input[name=vendor]').val(),
-						vendor_name:$('input[name=vendor_name]').val(),
-						income_insp_user:$('input[name=income_insp_user]').val(),
-						current_stock:$('input[name=current_stock]').val(),
-						purch_price:$('input[name=purch_price]').val(),
-						insp_f:$('input[name=insp_f]').val(),
-						deletion_f:$('input[name=deletion_f]').val()
+						insp_char:$('input[name=insp_char]').val(),
+						insp_char_name:$('input[name=insp_char_name]').val(),
+						qn_f:$('select[name=qn_f]').val(),
+						sample_qty:$('input[name=sample_qty]').val(),
+						ac:$('input[name=ac]').val(),
+						re:$('input[name=re]').val(),
+						usl:$('input[name=usl]').val(),
+						sl:$('input[name=sl]').val(),
+						lsl:$('input[name=lsl]').val(),
+						ucl:$('input[name=ucl]').val(),
+						cl:$('input[name=cl]').val(),
+						lcl:$('input[name=lcl]').val(),
+						unit:$('select[name=unit]').val(),
+						create_date:$('input[name=create_date]').val(),
+						update_date:$('input[name=update_date]').val(),
+						delete_date:$('input[name=delete_date]').val(),
+						deletion_f:$('select[name=deletion_f]').val()
 					}
 					,
 					function(result){
@@ -462,18 +302,21 @@
 	$(document).keydown(function(event) {
 	    if ( event.keyCode == 46 || event.which == 46 ) {
 	    	
-	    	var con_test = confirm("삭제하시겠습니까?");
-	    	if(con_test == true){
-	    	    alert("확인을 누르셨군요");
-	    	}
-	    	else if(con_test == false){
-	    	    alert("취소를 누르셨군요.");
+	    	var con_remove = confirm("삭제하시겠습니까?");
+	    	if(con_remove == true){
+	    		registerService.remove(
+	    				{
+	    					insp_char:$('input[name=insp_char]').val(),
+	    				},
+	    				function(result){
+	    					location.reload(true);
+	    				}
+	    		);
 	    	}
 	    }
 	});
 	
 	$("#table01 tr").click(function(){     
-		 
         var str = ""
         var tdArr = new Array();    // 배열 선언
         
@@ -488,20 +331,38 @@
         td.each(function(i){
             tdArr.push(td.eq(i).text());
         });
+        $("#insp_char").val(td.eq(3).text());
+        $("#insp_char_name").val(td.eq(4).text());
+        $("#qn_f").val(td.eq(5).text());
+        $("#sample_qty").val(td.eq(6).text());
+        $("#ac").val(td.eq(7).text());
+        $("#re").val(td.eq(8).text());
+        $("#usl").val(td.eq(9).text());
+        $("#sl").val(td.eq(10).text());
+        $("#lsl").val(td.eq(11).text());
+        $("#ucl").val(td.eq(12).text());
+        $("#cl").val(td.eq(13).text());
+        $("#lcl").val(td.eq(14).text());
+        $("#unit").val(td.eq(15).text());
+        $("#create_date").val(td.eq(17).text());
+        $("#update_date").val(td.eq(19).text());
+        $("#delete_date").val(td.eq(21).text());
+        $("#deletion_f").val(td.eq(22).text());
         
-        $("#item_code").val(td.eq(3).text());
-        $("#item_name").val(td.eq(4).text());
-        $("#purch_user").val(td.eq(5).text());
-        $("#purch_user_name").val(td.eq(6).text());
-        $("#purch_dept").val(td.eq(7).text());
-        $("#purch_dept_name").val(td.eq(8).text());
-        $("#vendor").val(td.eq(9).text());
-        $("#vendor_name").val(td.eq(10).text());
-        $("#income_insp_user").val(td.eq(11).text());
-        $("#current_stock").val(td.eq(12).text());
-        $("#purch_price").val(td.eq(13).text());
-        $("#insp_f").val(td.eq(14).text());
-        $("#deletion_f").val(td.eq(15).text());
+		var result = $('#qn_f option:selected').val();
+		if (result == '정성') {
+			$('#ac').attr("disabled",true).attr("readonly",false).val('');
+			$('#re').attr("disabled",true).attr("readonly",false).val('');
+			$('#usl').attr("disabled",false).attr("readonly",false);
+			$('#sl').attr("disabled",false).attr("readonly",false);
+			$('#lsl').attr("disabled",false).attr("readonly",false);
+		} else {
+			$('#usl').attr("disabled",true).attr("readonly",false).val('');
+			$('#sl').attr("disabled",true).attr("readonly",false).val('');
+			$('#lsl').attr("disabled",true).attr("readonly",false).val('');
+			$("#ac").attr("disabled",false).attr("readonly",false); //입력가능
+			$("#re").attr("disabled",false).attr("readonly",false); //입력가능
+		}
     });
 	</script>
 

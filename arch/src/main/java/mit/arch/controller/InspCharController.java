@@ -28,9 +28,9 @@ public class InspCharController {
 			consumes = "application/json",
 			produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> register(@RequestBody InspCharVO insp) {
-	
 		int insertCount = service.regiser(insp);
 		log.info("등록 처리결과"+insertCount);
+		
 		
 		return insertCount == 1
 		? new ResponseEntity<>("success", HttpStatus.OK)
@@ -45,6 +45,7 @@ public class InspCharController {
 	
 	@DeleteMapping(value = "/insp_char/{insp_char}", produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> remove(@PathVariable("insp_char") String insp_char){
+		log.info("삭제용 data:"+insp_char);
 		return service.remove(insp_char) == 1
 				? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -52,10 +53,7 @@ public class InspCharController {
 	
 	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH},
 			value = "/insp_char/{insp_char}", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> modify(
-			@RequestBody InspCharVO insp,
-			@PathVariable("insp_char") String insp_char){
-		insp.setInsp_char(insp_char);
+	public ResponseEntity<String> modify(@RequestBody InspCharVO insp){
 		return service.modify(insp)==1
 				? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -17,32 +17,35 @@
 </delete>
 
 <update id="update">
-	UPDATE inspection_characteristics SET
-										insp_char = #{insp_char},
-										insp_char_name = #{insp_char_name},
-										qn_f = #{qn_f},
-										sample_qty = #{sample_qty},
-										AC = #{AC},
-										RE = #{RE},
-										USL = #{USL},
-										SL = #{SL},
-										LSL = #{LSL},
-										UCL = #{UCL},
-										CL = #{CL},
-										LCL = #{LCL},
-										unit = #{unit},
-										create_user = #{create_user},
-										create_date = #{create_date},
-										update_user = #{update_user},
-										update_date = #{update_date},
-										delete_user = #{delete_user},
-										delete_date = #{delete_date},
-										deletion_f = #{deletion_f}
-										WHERE insp_char = #{insp_char}
+	UPDATE inspection_characteristics
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="insp_char != null">insp_char  = #{insp_char },</if>
+			<if test="insp_char_name != null">insp_char_name  = #{insp_char_name},</if>
+			<if test="qn_f != null">qn_f  = #{qn_f},</if>
+			<if test="sample_qty != null">sample_qty  = #{sample_qty},</if>
+			<if test="ac != null">ac  = #{ac},</if>
+			<if test="re != null">re  = #{re},</if>
+			<if test="usl != null">usl  = #{usl},</if>
+			<if test="sl != null">sl  = #{sl},</if>
+			<if test="lsl != null">lsl  = #{lsl},</if>
+			<if test="ucl != null">ucl  = #{ucl},</if>
+			<if test="cl != null">cl  = #{cl},</if>
+			<if test="lcl != null">lcl  = #{lcl},</if>
+			<if test="unit != null">unit  = #{unit },</if>
+			<if test="create_user != null">create_user  = #{create_user},</if>
+			<if test="create_date != null">create_date  = #{create_date},</if>
+			<if test="update_user != null">update_user  = #{update_user},</if>
+			<if test="update_date != null">update_date  = #{update_date},</if>
+			<if test="delete_user != null">delete_user  = #{delete_user},</if>
+			<if test="delete_date != null">delete_date  = #{delete_date},</if>
+			<if test="deletion_f != null">deletion_f  = #{deletion_f},</if>
+		</trim>
+	WHERE insp_char = #{insp_char}
 </update>
+
 <insert id="insert">
-	INSERT INTO inspection_characteristics(insp_char, insp_char_name, qn_f, sample_qty, AC, RE, USL, SL, LSL, UCL, CL, LCL, unit, create_date, update_date, delete_date, deletion_f)
-	VALUES(#{insp_char}, #{insp_char_name}, #{qn_f}, #{sample_qty, jdbcType=INTEGER}, #{AC, jdbcType=INTEGER}, #{RE, jdbcType=INTEGER}, #{USL, jdbcType=DOUBLE}, #{SL, jdbcType=DOUBLE}, #{LSL, jdbcType=DOUBLE}, #{UCL, jdbcType=DOUBLE}, #{CL, jdbcType=DOUBLE}, #{LCL, jdbcType=DOUBLE}, #{unit}, #{create_date, jdbcType=DATE}, #{update_date, jdbcType=DATE}, #{delete_date, jdbcType=DATE}, #{deletion_f})
+	INSERT INTO inspection_characteristics(insp_char, insp_char_name, qn_f, sample_qty, ac, re, usl, sl, lsl, ucl, cl, lcl, unit, create_date, update_date, delete_date, deletion_f)
+	VALUES(#{insp_char}, #{insp_char_name}, #{qn_f}, #{sample_qty, jdbcType=INTEGER}, #{ac, jdbcType=INTEGER}, #{re, jdbcType=INTEGER}, #{usl, jdbcType=FLOAT}, #{sl, jdbcType=FLOAT}, #{lsl, jdbcType=FLOAT}, #{ucl, jdbcType=FLOAT}, #{cl, jdbcType=FLOAT}, #{lcl, jdbcType=FLOAT}, #{unit}, #{create_date, jdbcType=DATE}, #{update_date, jdbcType=DATE}, #{delete_date, jdbcType=DATE}, #{deletion_f})
 </insert>
 
 <select id="read" resultType="mit.arch.domain.InspCharVO">

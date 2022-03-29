@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import mit.arch.service.BoardService;
+import mit.arch.service.InspCharService;
 
 @Controller
 @Log4j
@@ -14,6 +15,8 @@ import mit.arch.service.BoardService;
 public class ArchController {
 
 	private BoardService service;
+	
+	private InspCharService service2;
 
 	 @GetMapping("/material")
 	 public void material(Model model) {
@@ -22,7 +25,7 @@ public class ArchController {
 
 	 @GetMapping("/characteristics")
 	 public void characteristics(Model model) {
-			/* model.addAttribute("characteristics", service.getList()); */
+		model.addAttribute("characteristics", service2.getList());
 	 }
 		/*
 		 * @PostMapping("/register") public void register(BoardVO board,

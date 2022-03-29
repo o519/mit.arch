@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>
-	hi  
+	Arch MES 프로젝트
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
