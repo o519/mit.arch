@@ -3,13 +3,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- <settings> 
-<setting value="INTEGER" name="jdbcTypeForNull"> 
-</settings> -->
+
 <mapper namespace="mit.arch.mapper.InspCharMapper">
 
 <select id="getList" resultType="mit.arch.domain.InspCharVO">
 	SELECT * FROM inspection_characteristics ORDER BY insp_char
+</select>
+
+<select id="cnt" resultType="int">
+	SELECT count(*) cnt FROM item_insp_char where insp_char = #{insp_char}
+</select>
+
+<select id="getInspChar" resultType="string">
+	SELECT insp_char FROM inspection_characteristics ORDER BY insp_char
 </select>
 
 <delete id="delete">

@@ -20,5 +20,10 @@ public class InspCharServiceTests {
 	public void testGetList() {
 		service.getList().forEach(insp -> log.info(insp));
 	}
+	
+	@Test
+	public void testGet() {
+		log.info(service.get("insp_char02"));
+	}
 
 }

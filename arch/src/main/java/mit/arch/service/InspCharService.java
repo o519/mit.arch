@@ -15,5 +15,7 @@ public interface InspCharService {
 	public int modify(InspCharVO insp);
 	
 	public int remove(String insp_char);
+	
+	public List<String> getInspChar();
 
 }

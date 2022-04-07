@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="mit.arch.mapper.ItemInspCharMapper">
+  
+<insert id="insertItemInspChar">
+	INSERT INTO item_insp_char(item_code, insp_char, insp_char_name, qn_f, sample_qty, ac, re, usl, sl, lsl, ucl, cl, lcl, unit)
+	VALUES(#{item_code}, #{insp_char}, #{insp_char_name}, #{qn_f}, #{sample_qty, jdbcType=INTEGER}, #{ac, jdbcType=INTEGER}, #{re, jdbcType=INTEGER}, #{usl, jdbcType=FLOAT}, #{sl, jdbcType=FLOAT}, #{lsl, jdbcType=FLOAT}, #{ucl, jdbcType=FLOAT}, #{cl, jdbcType=FLOAT}, #{lcl, jdbcType=FLOAT}, #{unit})
+</insert>
+
+<select id="getList" resultType="mit.arch.domain.ItemInspCharVO">
+	SELECT * FROM item_insp_char order by item_code
+</select>
+
+<delete id="delete">
+	DELETE FROM item_insp_char WHERE item_code = #{item_code} and insp_char = #{insp_char}
+</delete>
+
+</mapper>

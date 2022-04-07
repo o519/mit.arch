@@ -20,4 +20,9 @@ public interface BoardMapper {
 	public int delete(String item_code);
 	
 	public int update(BoardVO board);
+	
+	public List<String> getItemCode();
+	
+	public int cnt(String item_code);
+	
 }

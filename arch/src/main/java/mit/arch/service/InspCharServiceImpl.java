@@ -36,14 +36,23 @@ public class InspCharServiceImpl implements InspCharService {
 
 	@Override
 	public int remove(String insp_char) {
-		// TODO Auto-generated method stub
-		return mapper.delete(insp_char);
+		//return mapper.delete(insp_char);
+		if(mapper.cnt(insp_char) != 0) //등록된 검사항목이라면 삭제를 실행하지 않고 2리턴
+			return 2;
+		else
+			return mapper.delete(insp_char);
 	}
 
 	@Override
 	public InspCharVO get(String insp_char) {
 		// TODO Auto-generated method stub
 		return mapper.read(insp_char);
+	}
+
+	@Override
+	public List<String> getInspChar() {
+		// TODO Auto-generated method stub
+		return mapper.getInspChar();
 	}
 
 }

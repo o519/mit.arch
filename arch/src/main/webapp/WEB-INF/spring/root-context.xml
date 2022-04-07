@@ -14,9 +14,9 @@
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="jdbcUrl"
-			value="jdbc:log4jdbc:oracle:thin:@192.168.0.9:1521:XE"></property>
-		<property name="username" value="arch"></property>
-		<property name="password" value="arch1234"></property>
+			value="jdbc:log4jdbc:oracle:thin:@192.168.0.26:1521:XE"></property>
+		<property name="username" value="mit"></property>
+		<property name="password" value="mit012345"></property>
 
 	</bean>
 

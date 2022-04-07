@@ -15,5 +15,9 @@ public interface InspCharMapper {
 	public int delete(String insp_char);
 	
 	public int update(InspCharVO insp);
+	
+	public List<String> getInspChar();
+	
+	public int cnt(String insp_char);
 
 }

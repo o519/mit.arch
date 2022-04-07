@@ -1,5 +1,6 @@
 package mit.arch.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,25 +9,38 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import mit.arch.service.BoardService;
 import mit.arch.service.InspCharService;
+import mit.arch.service.ItemInspCharService;
 
 @Controller
 @Log4j
 @AllArgsConstructor
 public class ArchController {
 
-	private BoardService service;
+	private BoardService boardService;
+	private InspCharService inspCharService;
+	private ItemInspCharService itemInspCharService;
 	
-	private InspCharService service2;
+	@GetMapping("/material")
+	@PreAuthorize("isAuthenticated()")
+	public void material(Model model) {
+		model.addAttribute("material", boardService.getList());
+	}
 
-	 @GetMapping("/material")
-	 public void material(Model model) {
-		 model.addAttribute("material", service.getList());
-	 }
-
-	 @GetMapping("/characteristics")
-	 public void characteristics(Model model) {
-		model.addAttribute("characteristics", service2.getList());
-	 }
+	@GetMapping("/characteristics")
+	public void characteristics(Model model) {
+		model.addAttribute("characteristics", inspCharService.getList());
+	}
+	 
+	@GetMapping("/item_insp_char")
+	public void itemInspChar(Model model) {
+		model.addAttribute("itemInspChar", itemInspCharService.getList());
+	}
+	
+	@GetMapping("/login")
+	public void login() {
+		
+	}
+	 
 		/*
 		 * @PostMapping("/register") public void register(BoardVO board,
 		 * RedirectAttributes rttr) { log.info("register: " + board);

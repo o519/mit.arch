@@ -1,13 +1,76 @@
+$.ajax({
+	type: 'get',
+	url: '/getItemCode',
+	dataType: 'json',
+	success: function(data){
+
+	    var searchSource = data; // 배열 생성
+	    
+	    $('#searchBox1').autocomplete({ // autocomplete 구현 시작부
+	        source : searchSource, //source 는 자동완성의 대상
+	        select : function(event, ui) { // item 선택 시 이벤트
+	            //console.log(ui.item);
+	        },
+	        focus : function(event, ui) { // 포커스 시 이벤트
+	            return false;
+	        },
+	        minLength : 1, // 최소 글자 수
+	        autoFocus : true, // true로 설정 시 메뉴가 표시 될 때, 첫 번째 항목에 자동으로 초점이 맞춰짐
+	        classes : { // 위젯 요소에 추가 할 클래스를 지정
+	            'ui-autocomplete' : 'highlight'
+	        },
+	        delay : 100, // 입력창에 글자가 써지고 나서 autocomplete 이벤트 발생될 떄 까지 지연 시간(ms)
+	        disable : false, // 해당 값 true 시, 자동완성 기능 꺼짐
+	        position : { my : 'right top', at : 'right bottom'}, // 제안 메뉴의 위치를 식별
+	        close : function(event) { // 자동완성 창 닫아질 때의 이벤트
+	            //console.log(event);
+	        }
+	    });
+		
+	}
+});
+
+$.ajax({
+	type: 'get',
+	url: '/getInspChar',
+	dataType: 'json',
+	success: function(data){
+
+	    var searchSource = data; // 배열 생성
+	    
+	    $('#searchBox2').autocomplete({ // autocomplete 구현 시작부
+	        source : searchSource, //source 는 자동완성의 대상
+	        select : function(event, ui) { // item 선택 시 이벤트
+	            //console.log(ui.item);
+	        },
+	        focus : function(event, ui) { // 포커스 시 이벤트
+	            return false;
+	        },
+	        minLength : 1, // 최소 글자 수
+	        autoFocus : true, // true로 설정 시 메뉴가 표시 될 때, 첫 번째 항목에 자동으로 초점이 맞춰짐
+	        classes : { // 위젯 요소에 추가 할 클래스를 지정
+	            'ui-autocomplete' : 'highlight'
+	        },
+	        delay : 100, // 입력창에 글자가 써지고 나서 autocomplete 이벤트 발생될 떄 까지 지연 시간(ms)
+	        disable : false, // 해당 값 true 시, 자동완성 기능 꺼짐
+	        position : { my : 'right top', at : 'right bottom'}, // 제안 메뉴의 위치를 식별
+	        close : function(event) { // 자동완성 창 닫아질 때의 이벤트
+	            //console.log(event);
+	        }
+	    });
+		
+	}
+});
+
 var registerService = (function() {
 	function remove(register, callback, error) {
 		$.ajax({
 			type : 'delete',
-			url : '/item/' + register.item_code,
+			url : '/item_insp_char/' + register.item_code + '/' + register.insp_char,
 			beforeSend: function(xhr) {
 				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 			},
 			success : function(deleteResult, status, xhr) {
-				console.log("처리결과"+deleteResult);
 				if(callback) {
 					callback(deleteResult);
 				}
@@ -19,34 +82,10 @@ var registerService = (function() {
 			}
 		});
 	}
-
-	function update(register, callback, error) {
-		console.log("등록"+JSON.stringify(register));
-		$.ajax({
-			type : 'put',
-			url : '/item/' + register.item_code,
-			beforeSend: function(xhr) {
-				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-			},
-			data : JSON.stringify(register),
-			contentType : "application/json; charset=utf-8",
-			success : function(result, status, xhr) {
-				if(callback) {
-					callback(result);
-				}
-			},
-			error : function(xhr, status, er) {
-				if (error) {
-					error(er);
-				}
-			}
-		});
-	}
-
 	function add(register, callback, error) {
 		$.ajax({
 	 		type : 'post',
-			url : '/item',
+			url : '/item_insp_char/add',
 			beforeSend: function(xhr) {
 				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 			},
@@ -54,7 +93,6 @@ var registerService = (function() {
 			contentType : "application/json; charset=utf-8",
 			success : function(result, status, xhr) {
 				if(callback) {
-					console.log(result);
 					callback(result);
 				}
 			},
@@ -69,12 +107,11 @@ var registerService = (function() {
 	}
  	return {
  		add:add,
- 		update:update,
  		remove:remove
 	};
  })();
  
- function exportTableToCsv(tableId, filename) {
+function exportTableToCsv(tableId, filename) {
     if (filename == null || typeof filename == undefined)
         filename = tableId;
     filename += ".csv";
