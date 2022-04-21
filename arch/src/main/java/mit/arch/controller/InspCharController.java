@@ -54,7 +54,7 @@ public class InspCharController {
 		else if(service.remove(insp_char) == 2)
 			return new ResponseEntity<>("삭제불가 - 등록된 검사항목(" + insp_char +")", HttpStatus.OK);
 		else
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("삭제불가", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	@DeleteMapping(value = "/insp_char/del", produces = "text/plain; charset=UTF-8")

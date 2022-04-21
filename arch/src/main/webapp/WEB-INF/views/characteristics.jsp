@@ -20,15 +20,20 @@
 		</div>
 	</div>
 	
-	<div class="input-group input-group-sm mb-3" style="width: 50%">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm">검사항목</span>
-	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm">검사항목명</span>
-	  </div>
-	  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	<div class="row row-cols-2 row-cols-sm-2 row-cols-lg-3" style="clear: both; margin: 0;">
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm">검사항목</span>
+			</div>
+			<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+		</div>
+	
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm">검사항목명</span>
+			</div>
+			<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+		</div>
 	</div>
 	<!-- autocomplete="off" -->
 	<form id="operForm" >
@@ -42,111 +47,162 @@
 			<button type="button" data-oper="remove" class="btn btn-outline-primary btn-sm">삭제</button>
 		</div>
 	</div>
-	<div class="input-group input-group-sm mb-1">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">검사항목</span>
-	  </div>
-	  <input name="enroll" type="text" id="insp_char" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autofocus="autofocus">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">검사항목명</span>
-	  </div>
-	  <input name="enroll"  type="text" id="insp_char_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">정성정량</span>
-	  </div>
-	  <select name="enroll" id="qn_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-        <option selected></option>
-        <option>정성</option>
-        <option>정량</option>
-      </select>
-	  <!-- <input name="purch_user"  type="text" id="purch_user" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">시료수</span>
-	  </div>
-	  <input name="enroll"  type="text" id="sample_qty" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">AC값</span>
-	  </div>
-	  <input name="enroll"  type="text" id="ac" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">RE값</span>
-	  </div>
-	  <input name="enroll"  type="text" id="re" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	</div>
-	<div class="input-group input-group-sm mb-1">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">USL</span>
-	  </div>
-	  <input name="enroll"  type="text" id="usl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">SL</span>
-	  </div>
-	  <input name="enroll"  type="text" id="sl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">LSL</span>
-	  </div>
-	  <input name="enroll"  id="lsl" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">UCL</span>
-	  </div>
-	  <input name="enroll"  type="text" id="ucl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">CL</span>
-	  </div>
-	  <input name="enroll"  type="text" id="cl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">LCL</span>
-	  </div>
-	  <input name="enroll"  type="text" id="lcl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	</div>
-	<div class="input-group input-group-sm mb-1" style="width: 83.4%">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">단위</span>
-	  </div>
-	  <select name="enroll" id="unit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-        <option selected></option>
-        <option>KG</option>
-        <option>EA</option>
-        <option>SET</option>
-        <option>포기</option>
-        <option>미터</option>
-        <option>포대</option>
-        <option>박스</option>
-      </select>
-	  <!-- <input name="unit"  type="text" id="unit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">생성일</span>
-	  </div>
-	  <input name="enroll" id="create_date" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <!-- <input name="insp_f"  type="text" id="insp_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">수정일</span>
-	  </div>
-	  <input name="enroll" id="update_date" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <!-- <input name="insp_f"  type="text" id="insp_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">삭제일</span>
-	  </div>
-	  <input name="enroll" id="delete_date" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	  <!-- <input name="insp_f"  type="text" id="insp_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">폐기여부</span>
-	  </div>
-      <select name="enroll" id="deletion_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-        <option selected></option>
-        <option>Y</option>
-        <option>N</option>
-      </select>
-	  <!-- <input name="deletion_f"  type="text" id="deletion_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
-	</div>
-	<div class="input-group input-group-sm mb-5">
-	  <div class="input-group-prepend">
-	    <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">비고</span>
-	  </div>
-	  <input name="enroll"  type="text" id="etc" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	
+	<div class="row row-cols-2 row-cols-sm-2 row-cols-lg-6" style="clear: both; margin: 0;">
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">검사항목</span>
+			</div>
+			<input name="enroll" type="text" id="insp_char" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autofocus="autofocus">
+		</div>
+		
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">검사항목명</span>
+			</div>
+			<input name="enroll"  type="text" id="insp_char_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+		</div>
+		
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">정성정량</span>
+			</div>
+			<select name="enroll" id="qn_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			     <option selected></option>
+			     <option>정성</option>
+			     <option>정량</option>
+			   </select>
+			<!-- <input name="purch_user"  type="text" id="purch_user" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
+		</div>
+		
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">시료수</span>
+			</div>
+			<input name="enroll"  type="text" id="sample_qty" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+		</div>
+		
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">AC값</span>
+			</div>
+			<input name="enroll"  type="text" id="ac" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+		</div>
+		
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">RE값</span>
+			</div>
+			<input name="enroll"  type="text" id="re" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+		</div>
+		
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">USL</span>
+			</div>
+			<input name="enroll"  type="text" id="usl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+		</div>
+		
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">SL</span>
+			</div>
+			<input name="enroll"  type="text" id="sl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  	</div>
+	  	
+	  	<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">LSL</span>
+			</div>
+			<input name="enroll"  id="lsl" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  	</div>
+	  	
+	  	<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">UCL</span>
+			</div>
+			<input name="enroll"  type="text" id="ucl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  	</div>
+	  	
+	  	<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">CL</span>
+			</div>
+			<input name="enroll"  type="text" id="cl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	  	</div>
+	  	
+	  	<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">LCL</span>
+			</div>
+			<input name="enroll"  type="text" id="lcl" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+		</div>
+		
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">단위</span>
+			</div>
+			<select name="enroll" id="unit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			     <option selected></option>
+			     <option>KG</option>
+			     <option>EA</option>
+			     <option>SET</option>
+			     <option>포기</option>
+			     <option>미터</option>
+			     <option>포대</option>
+			     <option>박스</option>
+			   </select>
+			<!-- <input name="unit"  type="text" id="unit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
+	  	</div>
+	  	
+	  	<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">생성일</span>
+			</div>
+			<input name="enroll" id="create_date" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly />
+			<!-- <input name="insp_f"  type="text" id="insp_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
+	  	</div>
+	  	
+	  	<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">수정일</span>
+			</div>
+			<input name="enroll" id="update_date" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly />
+			<!-- <input name="insp_f"  type="text" id="insp_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
+	  	</div>
+	  
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">삭제일</span>
+			</div>
+			<input name="enroll" id="delete_date" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly />
+			<!-- <input name="insp_f"  type="text" id="insp_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
+		</div>
+
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">폐기여부</span>
+			</div>
+			   <select name="enroll" id="deletion_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			     <option selected></option>
+			     <option>Y</option>
+			     <option>N</option>
+			   </select>
+			<!-- <input name="deletion_f"  type="text" id="deletion_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"> -->
+		</div>
+		
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 100px; display: inline-block; text-align: center;">비고</span>
+			</div>
+			<input name="enroll"  type="text" id="etc" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+		</div>
 	</div>
 	</form>
 	
+	<div class="align-items-center" style="height:31px">
+		<b class="align-middle">등록내역</b>
+	</div>
 	<div class="table-responsive" style="white-space: nowrap; text-align: center;">
 		<table id="table01" class="table table-striped">
 		  <thead>
@@ -167,11 +223,11 @@
 		      <th scope="col">CL</th>
 		      <th scope="col">LCL</th>
 		      <th scope="col">단위</th>
-		      <th scope="col">생성자</th>
+		      <!-- <th scope="col">생성자</th> -->
 		      <th scope="col">생성일자</th>
-		      <th scope="col">수정자</th>
+		      <!-- <th scope="col">수정자</th> -->
 		      <th scope="col">수정일자</th>
-		      <th scope="col">삭제자</th>
+		      <!-- <th scope="col">삭제자</th> -->
 		      <th scope="col">삭제일자</th>
 		      <th scope="col">폐기여부</th>
 		    </tr>
@@ -196,11 +252,12 @@
 				<td>${insp.cl}</td>
 				<td>${insp.lcl}</td>
 				<td>${insp.unit}</td>
-				<td>${insp.create_user}</td>
-				<td>${insp.create_date}</td>
-				<td>${insp.update_user}</td>
+				<%-- <td>${insp.create_user}</td> --%>
+				<%-- <td>${insp.create_date}</td> --%>
+				<td><fmt:formatDate pattern='yyyy-MM-dd' value = '${insp.create_date}' /></td>
+				<%-- <td>${insp.update_user}</td> --%>
 				<td>${insp.update_date}</td>
-				<td>${insp.delete_user}</td>
+				<%-- <td>${insp.delete_user}</td> --%>
 				<td>${insp.delete_date}</td>
 				<td>${insp.deletion_f}</td>
 			</tr>
@@ -217,7 +274,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 	<script>
-	
 	var csrfHeaderName = "${_csrf.headerName}"; 
 	var csrfTokenValue = "${_csrf.token}";
 	

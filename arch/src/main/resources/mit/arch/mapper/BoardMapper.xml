@@ -83,13 +83,13 @@
 	SELECT * FROM item where item_code = #{item_code}
 </select>
 
-<!-- <delete id="delete">
-	DELETE FROM item WHERE item_code = #{item_code}
-</delete> -->
-
 <delete id="delete">
+	DELETE FROM item WHERE item_code = #{item_code}
+</delete> 
+
+<!-- <delete id="delete">
 	DELETE FROM item WHERE item_code IN #{item_code}
-</delete>
+</delete> -->
 
 
 

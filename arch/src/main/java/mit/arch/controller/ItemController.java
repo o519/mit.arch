@@ -90,6 +90,29 @@ public class ItemController {
 		 */
 	}
 	
+	@DeleteMapping(value = "/item/del", produces = "text/plain; charset=UTF-8")
+	public ResponseEntity<String> delete(@RequestBody String[] item_code) {
+		
+		String a = "삭제성공 - ";
+		String b = "삭제불가 - "; 
+		
+		for(String i:item_code) {
+			if(service.remove(i) == 1)
+				a += (i+", ");
+			else if(service.remove(i) == 2)
+				b += (i+", ");
+		}
+		a = a.replaceAll("[\\s,]+$", "");
+		b = b.replaceAll("[\\s,]+$", "");
+		
+		if(a.equals("삭제성공 -"))
+			return new ResponseEntity<>(b, HttpStatus.OK);
+		else if(b.equals("삭제불가 -"))
+			return new ResponseEntity<>(a, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(a + "\n" + b, HttpStatus.OK);
+	}
+	
 	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH},
 			value = "/item/{item_code:.+}", consumes = "application/json")
 	public ResponseEntity<String> modify(

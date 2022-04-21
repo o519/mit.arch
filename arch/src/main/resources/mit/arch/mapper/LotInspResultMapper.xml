@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mit.arch.mapper.LotInspResultMapper">
+ 
+ 	<!-- Lot 리스트 조회(테스트 완료) -->
+	<select id="getLotList" resultType="mit.arch.domain.LotVO">
+		<!-- SELECT * FROM lot order by lot_no DESC -->
+		select lot.lot_no, lot.create_user, lot.create_date, lot.lot_size, lot.yn_f, lot.item_code, item.item_name
+		from lot left join item on lot.item_code = item.item_code order by lot_no DESC
+	</select>
+	
+	<!-- Lot 등록(테스트 완료) -->
+	<insert id="insertLot">
+		INSERT INTO lot(lot_no, create_user, create_date, lot_size, yn_f, item_code)
+		VALUES(('L'||to_char(sysdate,'YYYYMMDD')||'-'|| LPAD(LOT_SEQ.nextval,4,0)), #{create_user, jdbcType=VARCHAR}, sysdate, #{lot_size, jdbcType=INTEGER}, #{yn_f, jdbcType=VARCHAR}, #{item_code, jdbcType=VARCHAR})
+	</insert>
+	
+	<!-- Lot 삭제(테스트 완료) -->
+	<delete id="deleteLot">
+		DELETE FROM lot WHERE lot_no = #{lot_no}
+	</delete>
+	
+	<!-- Lot 수정(테스트 완료) -->
+	<update id="updateLot">
+		UPDATE lot
+			<trim prefix="SET" suffixOverrides=",">
+				<if test="lot_no != null">lot_no = #{lot_no},</if>
+				<if test="create_user != null">create_user = #{create_user},</if>
+				<if test="create_date != null">create_date = #{create_date},</if>
+				<if test="lot_size != null">lot_size = #{lot_size},</if>
+				<if test="yn_f != null">yn_f = #{yn_f},</if>
+				<if test="item_code != null">item_code = #{item_code},</if>
+			</trim>
+		WHERE lot_no = #{lot_no}
+	</update>
+	
+ 
+</mapper>

@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j;
 import mit.arch.service.BoardService;
 import mit.arch.service.InspCharService;
 import mit.arch.service.ItemInspCharService;
+import mit.arch.service.LotInspResultService;
 
 @Controller
 @Log4j
@@ -19,6 +20,7 @@ public class ArchController {
 	private BoardService boardService;
 	private InspCharService inspCharService;
 	private ItemInspCharService itemInspCharService;
+	private LotInspResultService lotInspResultService;
 	
 	@GetMapping("/material")
 	@PreAuthorize("isAuthenticated()")
@@ -38,6 +40,12 @@ public class ArchController {
 	
 	@GetMapping("/login")
 	public void login() {
+		
+	}
+	
+	@GetMapping("/lotInspResult")
+	public void lotInspResult(Model model) {
+		model.addAttribute("lotList", lotInspResultService.getListLot());
 		
 	}
 	 

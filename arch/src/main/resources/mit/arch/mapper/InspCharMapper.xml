@@ -51,7 +51,7 @@
 
 <insert id="insert">
 	INSERT INTO inspection_characteristics(insp_char, insp_char_name, qn_f, sample_qty, ac, re, usl, sl, lsl, ucl, cl, lcl, unit, create_date, update_date, delete_date, deletion_f)
-	VALUES(#{insp_char}, #{insp_char_name}, #{qn_f}, #{sample_qty, jdbcType=INTEGER}, #{ac, jdbcType=INTEGER}, #{re, jdbcType=INTEGER}, #{usl, jdbcType=FLOAT}, #{sl, jdbcType=FLOAT}, #{lsl, jdbcType=FLOAT}, #{ucl, jdbcType=FLOAT}, #{cl, jdbcType=FLOAT}, #{lcl, jdbcType=FLOAT}, #{unit}, #{create_date, jdbcType=DATE}, #{update_date, jdbcType=DATE}, #{delete_date, jdbcType=DATE}, #{deletion_f})
+	VALUES(#{insp_char}, #{insp_char_name}, #{qn_f}, #{sample_qty, jdbcType=INTEGER}, #{ac, jdbcType=INTEGER}, #{re, jdbcType=INTEGER}, #{usl, jdbcType=FLOAT}, #{sl, jdbcType=FLOAT}, #{lsl, jdbcType=FLOAT}, #{ucl, jdbcType=FLOAT}, #{cl, jdbcType=FLOAT}, #{lcl, jdbcType=FLOAT}, #{unit}, sysdate, #{update_date, jdbcType=DATE}, #{delete_date, jdbcType=DATE}, #{deletion_f})
 </insert>
 
 <select id="read" resultType="mit.arch.domain.InspCharVO">

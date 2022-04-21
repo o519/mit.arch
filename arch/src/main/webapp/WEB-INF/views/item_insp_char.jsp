@@ -24,11 +24,11 @@
 		</div>
 	</div>
 	<!-- <div class="input-group input-group-sm mb-3">  --> <!-- style="width: 33.8%" -->
-	<div class="row mb-3" style="clear: both; margin: 0;"> 
+	<div class="row mb-3 row-cols-1 row-cols-sm-2 row-cols-lg-4" style="clear: both; margin: 0;"> 
 	
 		<div class="col input-group input-group-sm" style="padding:0">
 			<div class="input-group-prepend">
-				<span class="input-group-text" id="inputGroup-sizing-sm">자재코드</span>
+				<span class="input-group-text" id="inputGroup-sizing-sm" onclick="empty_itemCode()">자재코드</span>
 			</div>
 			<input id="searchBox1" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  autofocus="autofocus" onkeyup="if(window.event.keyCode==13){item_code()}">
 			<div class="input-group-append">
@@ -38,13 +38,25 @@
 		
 		<div class="col input-group input-group-sm" style="padding:0">
 			<div class="input-group-prepend">
-				<span class="input-group-text" id="inputGroup-sizing-sm">검사항목</span>
+				<span class="input-group-text" id="inputGroup-sizing-sm" onclick="empty_inspChar()">검사항목</span>
 			</div>
 			<input id="searchBox2" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" onkeyup="if(window.event.keyCode==13){insp_char()}">
 			<div class="input-group-append">
 				<button class="btn btn-outline-secondary" type="button" id="insp_char_btn"><i class="bi bi-check-lg"></i></button>
 			</div>
 		</div>
+		
+		<div class="col input-group input-group-sm" style="padding:0">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-sm" onclick="empty_itemCode2()">자재코드</span>
+			</div>
+			<input id="searchBox3" list="code_list" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autoComplete="off" onkeyup="if(window.event.keyCode==13){item_code2()}"/>
+			<datalist id ="code_list"></datalist>
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary" type="button" id="item_code_btn2"><i class="bi bi-check-lg"></i></button>
+			</div>
+		</div>
+		
 	</div>
 	<!-- autocomplete="off" -->
 	<form id="operForm" >
@@ -242,38 +254,10 @@
 	var csrfHeaderName = "${_csrf.headerName}"; 
 	var csrfTokenValue = "${_csrf.token}";
 	
-	$("#item_code_btn").click(function(){
-		var itemcode = document.getElementById('searchBox1').value;
-	    document.getElementById('item_code').value = itemcode;
-	});
+	$("#item_code_btn").click(function(){item_code()});
+	$("#insp_char_btn").click(function(){insp_char()});
+	$("#item_code_btn2").click(function(){item_code2()});
 	
-	$("#insp_char_btn").click(function(){
-		var inspchar = document.getElementById('searchBox2').value;
-	    
-	    $.ajax({
-	    	type: 'get',
-	    	url: '/insp_char/' + inspchar,
-	    	dataType: 'json',
-	    	success: function(data){
-	    		//console.log(data);
-	    		//console.log(data.insp_char);
-	    		//console.log(insp_char);
-	    		document.getElementById('insp_char').value = data.insp_char;
-	    		document.getElementById('insp_char_name').value = data.insp_char_name;
-	    		document.getElementById('qn_f').value = data.qn_f;
-	    		document.getElementById('sample_qty').value = data.sample_qty;
-	    		document.getElementById('ac').value = data.ac;
-	    		document.getElementById('re').value = data.re;
-	    		document.getElementById('usl').value = data.usl;
-	    		document.getElementById('sl').value = data.sl;
-	    		document.getElementById('lsl').value = data.lsl;
-	    		document.getElementById('ucl').value = data.ucl;
-	    		document.getElementById('cl').value = data.cl;
-	    		document.getElementById('lcl').value = data.lcl;
-	    		document.getElementById('unit').value = data.unit;
-	    	}
-	    });
-	});
 	$(document).ready(function(){
 		var operForm = $("#operForm");
 		$("button[data-oper='register']").on("click", function(e){
@@ -415,10 +399,22 @@
 	
 	function item_code() {
 		if($('input[id=searchBox1]').val() != ""){
-			document.getElementById('item_code').value = $('input[id=searchBox1]').val();
+			
+			var itemcode = $('input[id=searchBox1]').val();
+			
+			$.ajax({
+		    	type: 'get',
+		    	url: '/item/' + itemcode,
+		    	dataType: 'json',
+		    	success: function(data){
+		    		//console.log(data);
+		    		document.getElementById('item_code').value = data.item_code;
+		    	}
+		    });
 			document.getElementById('searchBox2').focus();
 		}
-	}
+	};
+	
 	function insp_char() {
 		if($('input[id=searchBox2]').val() != ""){
 			var inspchar = $('input[id=searchBox2]').val();
@@ -443,10 +439,41 @@
 		    		document.getElementById('unit').value = data.unit;
 		    	}
 		    });
+			document.getElementById('searchBox3').focus();
+		}
+	};
+	
+	function item_code2() {
+		if($('input[id=searchBox3]').val() != ""){
+			
+			//var itemcode = $('input[id=target2]').val();
+			var itemcode = document.getElementById('searchBox3').value;
+			
+			$.ajax({
+				type: 'get',
+				url: '/item/' + itemcode,
+				dataType: 'json',
+				success: function(data){
+					//console.log(data);
+					document.getElementById('item_code').value = data.item_code;
+				}
+			});
 			document.getElementById('searchBox1').focus();
 		}
-	}
+	};
 	
+	function empty_itemCode() {
+		var input = document.getElementById('searchBox1');
+		input.value = null;
+	};
+	function empty_inspChar() {
+		var input = document.getElementById('searchBox2');
+		input.value = null;
+	};
+	function empty_itemCode2() {
+		var input = document.getElementById('searchBox3');
+		input.value = null;
+	};
 	</script>
 	
 	</body>

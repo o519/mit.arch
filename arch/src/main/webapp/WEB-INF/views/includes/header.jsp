@@ -53,11 +53,12 @@
 			          <li><a class="dropdown-item" href="#">검사성적서*</a></li>
 			          <li><hr class="dropdown-divider"></li>
 			          <li>&nbsp;&nbsp;<b>기준정보</span></b></li>
-			          <li><a class="dropdown-item" href="#">검사항목관리*</a></li>
-			          <li><a class="dropdown-item" href="#">검사표준관리*</a></li>
+			          <!-- <li><a class="dropdown-item" href="#">검사항목관리*</a></li> -->
+			          <!-- <li><a class="dropdown-item" href="#">검사표준관리*</a></li> -->
 			          <li><a class="dropdown-item" href="/material">검사자재등록</a></li>
 			          <li><a class="dropdown-item" href="/characteristics">검사항목등록</a></li>
 			          <li><a class="dropdown-item" href="/item_insp_char">자재별검사항목등록</a></li>
+			          <li><a class="dropdown-item" href="/lotInspResult">Lot별 검사결과입력</a></li>
 			        </ul>
 		      	</li>
 				<a class="nav-link" href="#">예산관리</a>

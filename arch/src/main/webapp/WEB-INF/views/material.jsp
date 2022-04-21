@@ -252,10 +252,12 @@
 				if(confirm("삭제하시겠습니까?") == true) {
 					$.ajax({
 						type : 'delete',
-						url : '/item/' + itemCodeArr,
+						url : '/item/del',
 						beforeSend: function(xhr) {
 							xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 						},
+						data : JSON.stringify(itemCodeArr),
+						contentType : "application/json; charset=utf-8",
 						success : function(deleteResult, status, xhr) {
 							console.log("처리결과"+deleteResult);
 							alert(deleteResult);
