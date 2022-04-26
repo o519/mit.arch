@@ -4,9 +4,12 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import mit.arch.domain.LotDTO;
 import mit.arch.service.BoardService;
 import mit.arch.service.InspCharService;
 import mit.arch.service.ItemInspCharService;
@@ -45,9 +48,20 @@ public class ArchController {
 	
 	@GetMapping("/lotInspResult")
 	public void lotInspResult(Model model) {
-		model.addAttribute("lotList", lotInspResultService.getListLot());
-		
+		//String lot_no = "L20220420-0032";
+		model.addAttribute("lotList",lotInspResultService.getListLot());
+		//.addAttribute("sampleList", lotInspResultService.getSampleList(lot_no));
 	}
+
+	
+//	@GetMapping("/lotInspResult")
+//	public @ResponseBody LotDTO doJson(Model model) {
+//		
+//		LotDTO dto = new LotDTO();
+//		dto.getLot_no();
+//		
+//		return dto;
+//	}
 	 
 		/*
 		 * @PostMapping("/register") public void register(BoardVO board,

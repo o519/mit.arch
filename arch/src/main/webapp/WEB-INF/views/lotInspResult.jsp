@@ -27,30 +27,36 @@
 	
 		<div class="col input-group input-group-sm" style="padding:0">
 			<div class="input-group-prepend">
-				<span class="input-group-text" id="inputGroup-sizing-sm" onclick="empty_itemCode()">LOT_NO</span>
+				<span class="input-group-text" id="inputGroup-sizing-sm" onclick="empty_itemCode()" style="width: 100px; display: inline-block; text-align: center;">LOT_NO</span>
 			</div>
 			<input id="lot_no" name="lot_no" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly />
 		</div>
 		
 		<div class="col input-group input-group-sm" style="padding:0">
 			<div class="input-group-prepend">
-				<span class="input-group-text" id="inputGroup-sizing-sm" onclick="empty_inspChar()">자재코드</span>
+				<span class="input-group-text" id="inputGroup-sizing-sm" onclick="empty_inspChar()" style="width: 100px; display: inline-block; text-align: center;">자재코드</span>
 			</div>
-			<input id="item_code" name="item_code" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autofocus="autofocus" autoComplete="off" />
+			<input id="item_code" list="code_list" name="item_code" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autofocus="autofocus" autoComplete="off" />
+			<datalist id ="code_list"></datalist>
 		</div>
 		
 		<div class="col input-group input-group-sm" style="padding:0">
 			<div class="input-group-prepend">
-				<span class="input-group-text" id="inputGroup-sizing-sm" onclick="empty_itemCode2()">LOT_SIZE</span>
+				<span class="input-group-text" id="inputGroup-sizing-sm" onclick="empty_itemCode2()" style="width: 100px; display: inline-block; text-align: center;">LOT_SIZE</span>
 			</div>
 			<input id="lot_size" name="lot_size" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autoComplete="off" />
 		</div>
 		
 		<div class="col input-group input-group-sm" style="padding:0">
 			<div class="input-group-prepend">
-				<span class="input-group-text" id="inputGroup-sizing-sm" onclick="empty_itemCode2()">합불여부</span>
+				<span class="input-group-text" id="inputGroup-sizing-sm" onclick="empty_itemCode2()" style="width: 100px; display: inline-block; text-align: center;">합불여부</span>
 			</div>
-			<input id="yn_f" name="yn_f" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autoComplete="off" />
+			<!-- <input id="yn_f" name="yn_f" type="button" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autoComplete="off" /> -->
+			<select name="yn_f" id="yn_f" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			     <option selected></option>
+			     <option>합격</option>
+			     <option>불합격</option>
+			   </select>
 			<button type="button" data-oper="lot_register" class="btn btn-outline-primary btn-sm">등록</button>
 		</div>
 		
@@ -155,17 +161,25 @@
 		  	<tr>
 		  		<td style="width:1px;"><input type="checkbox" name='chkbox' value='' onclick='getCheckboxValue(event)'/></td>
 				<td style="width:50px;">${i}</td>
-				<td>${lot.lot_no}</td>
+				<td id="modal_lot_no">${lot.lot_no}</td>
 				<td>${lot.lot_size}</td>
 				<td>${lot.item_code}</td>
 				<td>${lot.item_name}</td>
 				<%-- <td>${insp.sample_qty}</td --%>
 				<!-- 합격: class="btn btn-success" // 미달: class="btn btn-danger // 검사 class="btn btn-warning" " -->
+				
 				<td><button type="button" class="
 					<c:if test='${lot.yn_f eq "합격"}'>btn btn-success btn-sm</c:if> 
 					<c:if test='${lot.yn_f eq "불합격"}'>btn btn-danger btn-sm</c:if>
 					<c:if test='${empty lot.yn_f}'>btn btn-warning btn-sm</c:if>
-				" data-toggle="modal" data-target="#exampleModal">${empty lot.yn_f ? '검사중' : lot.yn_f}</button></td>
+				" data-toggle="modal" data-target="#exampleModal" value="${lot.lot_no}">${empty lot.yn_f ? '검사대기' : lot.yn_f}</button></td>
+				
+				<%-- <td><input type="button" class="
+					<c:if test='${lot.yn_f eq "합격"}'>btn btn-success btn-sm</c:if> 
+					<c:if test='${lot.yn_f eq "불합격"}'>btn btn-danger btn-sm</c:if>
+					<c:if test='${empty lot.yn_f}'>btn btn-warning btn-sm</c:if>
+				" data-toggle="modal" data-target="#exampleModal" value="${empty lot.yn_f ? '검사대기' : lot.yn_f}"></td> --%>
+				
 				<td>${lot.create_user}</td>
 				<td><fmt:formatDate pattern='yyyy-MM-dd hh:mm' value = '${lot.create_date}' /></td>
 				<td></td>
@@ -230,46 +244,36 @@
 	</div> --%>
 	
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="white-space: nowrap; text-align: center;">
 	  <div class="modal-dialog modal-dialog-scrollable modal-xl">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h5 class="modal-title" id="exampleModalLabel">Lot 등록내역</h5>
-	        <div class="right" style="padding:0; right;">
-	        	<button type="button" class="btn btn-secondary" data-dismiss="modal" style="rigth">삭제</button>
+	        <div>
+	        	<button type="button" id="btn_save" class="btn btn-secondary" data-dismiss="modal">저장</button>
+	        	<button type="button" class="btn btn-secondary" data-dismiss="modal">삭제</button>
 	        </div>
 	        <button type="button" id="modal_close" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
 	      <div class="modal-body">
-		      <table id="lotTable" class="table table-striped" style="height:300px;">
+		      <table id="lotTable" class="table table-striped">
 			  <thead>
 			    <tr>
 				  <th><input type="checkbox" name="selectall" value="selectall" onclick="selectAll(this)"></th>
 			      <th scope="col">#</th>
 			      <th scope="col">LOT_NO</th>
-			      <th scope="col">LOT_SIZE</th>
 			      <th scope="col">자재코드</th>
-			      <th scope="col">합불여부</th>
-			      <th scope="col">생성자</th>
-			      <th scope="col">생성일자</th>
+			      <th scope="col">검사항목</th>
+			      <th scope="col">검사항목명</th>
+			      <th scope="col">시료번호</th>
+			      <th scope="col">검사결과값</th>
+			      <th scope="col">합격여부</th>
 			    </tr>
 			  </thead>
-			  <tbody>
-			  <c:forEach items="${lotList}" var="lot">
-			  	<c:set var="i" value="${i+1}"/>
-			  	<tr>
-			  		<td><input type="checkbox" name='chkbox' value='' onclick='getCheckboxValue(event)'/></td>
-					<td>${i}</td>
-					<td>${lot.lot_no}</td>
-					<td>${lot.lot_size}</td>
-					<td>${lot.item_code}</td>
-					<td>${lot.yn_f}</td>
-					<td>${lot.create_user}</td>
-					<td><fmt:formatDate pattern='yyyy-MM-dd hh:mm' value = '${lot.create_date}' /></td>
-			  	</tr>
-			  </c:forEach>
+			  <tbody id="tbody">
+
 			  </tbody>
 			</table>
 	      </div>
@@ -309,12 +313,12 @@
 	function lotAdd(){
 		registerService.add(
 				{
-					lot_no:$('input[name=lot_no]').val(),
+					lot_no:$('#lot_no').val(),
 					//create_user:$('input[name=create_user]').val(),
 					//create_date:$('input[name=create_date]').val(),
-					lot_size:$('input[name=lot_size]').val(),
-					yn_f:$('input[name=yn_f]').val(),
-					item_code:$('input[name=item_code]').val()
+					lot_size:$('#lot_size').val(),
+					yn_f:$('#yn_f').val(),
+					item_code:$('#item_code').val()
 				}
 				,
 				function(result){
@@ -349,8 +353,124 @@
         
         //모달창 닫기
         document.getElementById("modal_close").click();
-
     });
+	
+	$("#btn_save").click(function(){
+		console.log("저장");
+		
+		/* var trGroup = Array.from(document.querySelectorAll('#lotTable tr'));
+
+		var textGroup = trGroup.map(tr => {
+			return Array.from(tr).map(input => input.value);
+		}); */
+		
+		//var dataArrayToSend1 = [];
+		var dataArray = [];
+		var dataArray3 = ["lot_no",""];
+		
+		$("#lotTable tr").each(function() {
+			var len = $(this).find("td").length;
+			for(var i=2; i< len; i++){
+				if(i==6){
+					dataArray.push(($(this).find("td").eq(i).text()).replace(/\/.*/g,''));
+					continue;
+				}else if(i==7){
+					continue;
+				}
+				//dataArrayToSend1.push($(this).find("tr").eq(i).text());
+				//dataArray.push($(this).find("td").eq(i).text());
+				dataArray.push($(this).find("td").eq(i).text());
+			}
+			dataArray.push(dataArray3);
+		});
+		//console.log(dataArrayToSend1);
+		console.log(dataArray);
+		//console.log(dataArray3);
+		//console.log(textGroup);
+		/* $.ajax({
+	 		type : 'post',
+			url : '/lotInspResult/add',
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
+			data : JSON.stringify(register),
+			contentType : "application/json; charset=utf-8",
+			success : function(result, status, xhr) {
+				if(callback) {
+					callback(result);
+				}
+			},
+			error : function(xhr, status, er) {
+				console.log("등록에러");
+				alert("에러");
+				if (error) {
+					error(er);
+				}
+			}
+		}); */
+	});
+	
+	$("#table01 button").click(function(){
+		
+		//console.log(this.value);
+		
+		$.ajax({
+			type : 'get',
+			url : '/lotInspResult/' + this.value + ".json",
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
+			//dataType: 'json',
+			success : function(result, status, xhr) {
+			//console.log("성공");
+			//console.log(result);
+			//console.log(status);
+			//console.log(xhr);
+			//$("#lotTable").html(result) ;
+			
+			var table = result;
+			var str = '<TR>';
+			var cnt = 1;
+			$.each(table, function(i){
+				
+				
+				for(j=0; j<table[i].sample_qty; j++) {
+					str += '<TD><input type="checkbox" name="chkbox" value="" onclick="getCheckboxValue(event)"/></TD><TD>'
+					+ cnt + '</TD><TD>'
+					+ table[i].lot_no + '</TD><TD>'
+					+ table[i].item_code + '</TD><TD>' 
+					+ table[i].insp_char + '</TD><TD>' 
+					+ table[i].insp_char_name + '</TD><TD>' 
+					+ parseInt(j+1) + '/' + table[i].sample_qty + '</TD><TD>'
+					+ '<input type="text" autoComplete="off" /></TD><TD>'
+					+ '<select name="result"><option value=""></option><option value="합격">합격</option><option value="불합격">불합격</option></TD>';
+					str += '</TR>';
+					cnt ++;
+				}
+			});
+			
+			$("#tbody").empty();
+			$("#tbody").append(str);
+			
+			/* $.each(result, function(index, item) { // 데이터 =item
+				$("#lotTable").append(index + " "); // index가 끝날때까지 
+				$("#lotTable").append(item.lot_no + " ");
+				$("#lotTable").append(item.item_code + " ");
+				$("#lotTable").append(item.insp_char + " ");
+				$("#lotTable").append(item.lot_no + "<br>");
+			}); */
+		
+			},
+			error : function(xhr, status, er) {
+				console.log("실패");
+				console.log(xhr);
+				console.log(status);
+				console.log(er);
+			}
+		
+		});
+		
+	});
 	
 	</script>
 </body>

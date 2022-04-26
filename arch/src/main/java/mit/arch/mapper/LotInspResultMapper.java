@@ -31,4 +31,12 @@ public interface LotInspResultMapper {
 	//insp_result 리스트 조회
 	public List<InspResultVO> getResultList();
 	
+	//sample 리스트 조회
+	public List<InspResultVO> getSampleList(String lot_no);
+	
+	public int lotCnt(String lot_no);
+	
+	public int insertInspResult(InspResultVO result);
+	
+	public List<InspResultVO> getInspResult(String lot_no);
 }

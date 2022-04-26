@@ -3,10 +3,16 @@
 <mapper namespace="mit.arch.mapper.LotInspResultMapper">
  
  	<!-- Lot 리스트 조회(테스트 완료) -->
-	<select id="getLotList" resultType="mit.arch.domain.LotVO">
-		<!-- SELECT * FROM lot order by lot_no DESC -->
+ 	<select id="getLotList" resultType="mit.arch.domain.LotVO">
 		select lot.lot_no, lot.create_user, lot.create_date, lot.lot_size, lot.yn_f, lot.item_code, item.item_name
 		from lot left join item on lot.item_code = item.item_code order by lot_no DESC
+	</select>
+	
+	<select id="getSampleList" resultType="mit.arch.domain.InspResultVO">
+		select lot.lot_no, lot.item_code, insp.insp_char, insp.insp_char_name, insp.sample_qty
+		from lot left join item_insp_char insp on lot.item_code = insp.item_code
+		WHERE lot.lot_no = #{lot_no}
+		order by insp.insp_char
 	</select>
 	
 	<!-- Lot 등록(테스트 완료) -->
@@ -34,5 +40,17 @@
 		WHERE lot_no = #{lot_no}
 	</update>
 	
+	<select id="lotCnt" resultType="int">
+		select count(*) cnt from insp_result where lot_no = #{lot_no}
+	</select>
+	
+	<insert id="insertInspResult">
+		INSERT INTO insp_result(lot_no,sample_no,item_code,insp_char,insp_char_name,insp_result,yn_f)
+		VALUES(#{lot_no},#{sample_no},#{item_code},#{insp_char},#{insp_char_name},#{insp_result},#{yn_f})
+	</insert>
+	
+	<select id="getInspResult" resultType="mit.arch.domain.InspResultVO">
+		select * from insp_result where lot_no = #{lot_no}
+	</select>
  
 </mapper>

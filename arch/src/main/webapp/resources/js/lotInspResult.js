@@ -1,3 +1,14 @@
+$.ajax({
+  type: 'get',
+  url: '/getItemCode',
+  dataType: 'json',
+  success: function (data) {
+	 for(var i=0; i<data.length; i++){
+		$("#code_list").append('<option value="' + data[i] + '" />');
+	 }
+  }
+});
+
 var registerService = (function() {
 	function remove(register, callback, error) {
 		$.ajax({
@@ -65,6 +76,9 @@ function exportTableToCsv(tableId, filename) {
             }
             else {
                 columnData = columnData.toString().replace(/"/g, '""'); // escape double quotes
+                columnData = columnData.toString().replace(/(\r\n|\n|\r)/gm, "");
+                columnData = columnData.toString().replace(/<\/button>/g, '');
+                columnData = columnData.toString().replace(/<.*>/g, '');
             }
             csvString = csvString + '"' + columnData + '",';
         }
