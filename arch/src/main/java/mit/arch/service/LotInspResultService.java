@@ -28,5 +28,9 @@ public interface LotInspResultService {
 	public int insertInspResult(InspResultVO result);
 	
 	public List<InspResultVO> getInspResult(String lot_no);
+	
+	public int updateInspResult(InspResultVO result);
+	
+	public int resultCnt(String lot_no, String insp_char, Integer sample_no);
 
 }

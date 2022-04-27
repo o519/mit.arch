@@ -2,6 +2,8 @@ package mit.arch.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import mit.arch.domain.InspResultVO;
 import mit.arch.domain.LotVO;
 
@@ -36,7 +38,11 @@ public interface LotInspResultMapper {
 	
 	public int lotCnt(String lot_no);
 	
+	public int resultCnt(@Param("lot_no") String lot_no, @Param("insp_char") String insp_char,@Param("sample_no") Integer sample_no);
+	
 	public int insertInspResult(InspResultVO result);
 	
 	public List<InspResultVO> getInspResult(String lot_no);
+	
+	public int updateInspResult(InspResultVO result);
 }

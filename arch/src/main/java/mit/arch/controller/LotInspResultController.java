@@ -31,12 +31,46 @@ public class LotInspResultController {
 //		log.info(lot_no);
 //		service.getSampleList(lot_no);
 //	}
+	
+	//순차 insert
 	@PostMapping(value = "/lotInspResult/add", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> insertInspResult(@RequestBody InspResultVO result) {
-		int insertCnt = service.insertInspResult(result);
-		log.info("등록결과: " + insertCnt);
-		return insertCnt == 1? new ResponseEntity<>("success", HttpStatus.OK):new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	public ResponseEntity<String> insertInspResult(@RequestBody List<InspResultVO> result) {
+		for(InspResultVO temp:result) {
+			if(service.resultCnt(temp.getLot_no(), temp.getInsp_char(), temp.getSample_no()) == 0) {
+				//log.info(temp);
+				//log.info("저장");
+				service.insertInspResult(temp);
+			}else {
+				//log.info(temp);
+				//log.info("수정");
+				service.updateInspResult(temp);
+			}
+			//log.info(temp);
+		}
+		//int insertCnt = service.insertInspResult(result);
+		//log.info("등록결과: " + insertCnt);
+		//return insertCnt == 1? new ResponseEntity<>("success", HttpStatus.OK):new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		return null;
 	}
+	
+//	//다중 insert
+//	@PostMapping(value = "/lotInspResult/add", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+//	public ResponseEntity<String> insertInspResult(@RequestBody List<InspResultVO> result) {
+//			
+//		for(InspResultVO temp:result) {
+//			if(service.lotCnt(temp.getLot_no()) == 0) {
+//				service.insertInspResult(temp);
+//			}else {
+//				service.updateInspResult(temp);
+//			}
+//			//log.info(temp);
+//		}
+//		//int insertCnt = service.insertInspResult(result);
+//		//log.info("등록결과: " + insertCnt);
+//		//return insertCnt == 1? new ResponseEntity<>("success", HttpStatus.OK):new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//		return null;
+//	}
+//	
 	
 	
 	@GetMapping(value = "/lotInspResult/{lot_no}")

@@ -328,7 +328,7 @@
 		);
 	};
 	
-	$("#lotTable tbody tr").click(function(){     
+/* 	$("#lotTable tbody tr").click(function(){     
         var str = ""
         var tdArr = new Array();    // 배열 선언
         
@@ -353,62 +353,7 @@
         
         //모달창 닫기
         document.getElementById("modal_close").click();
-    });
-	
-	$("#btn_save").click(function(){
-		console.log("저장");
-		
-		/* var trGroup = Array.from(document.querySelectorAll('#lotTable tr'));
-
-		var textGroup = trGroup.map(tr => {
-			return Array.from(tr).map(input => input.value);
-		}); */
-		
-		//var dataArrayToSend1 = [];
-		var dataArray = [];
-		var dataArray3 = ["lot_no",""];
-		
-		$("#lotTable tr").each(function() {
-			var len = $(this).find("td").length;
-			for(var i=2; i< len; i++){
-				if(i==6){
-					dataArray.push(($(this).find("td").eq(i).text()).replace(/\/.*/g,''));
-					continue;
-				}else if(i==7){
-					continue;
-				}
-				//dataArrayToSend1.push($(this).find("tr").eq(i).text());
-				//dataArray.push($(this).find("td").eq(i).text());
-				dataArray.push($(this).find("td").eq(i).text());
-			}
-			dataArray.push(dataArray3);
-		});
-		//console.log(dataArrayToSend1);
-		console.log(dataArray);
-		//console.log(dataArray3);
-		//console.log(textGroup);
-		/* $.ajax({
-	 		type : 'post',
-			url : '/lotInspResult/add',
-			beforeSend: function(xhr) {
-				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-			},
-			data : JSON.stringify(register),
-			contentType : "application/json; charset=utf-8",
-			success : function(result, status, xhr) {
-				if(callback) {
-					callback(result);
-				}
-			},
-			error : function(xhr, status, er) {
-				console.log("등록에러");
-				alert("에러");
-				if (error) {
-					error(er);
-				}
-			}
-		}); */
-	});
+    }); */
 	
 	$("#table01 button").click(function(){
 		
@@ -432,18 +377,45 @@
 			var str = '<TR>';
 			var cnt = 1;
 			$.each(table, function(i){
-				
-				
-				for(j=0; j<table[i].sample_qty; j++) {
+				if(table[0].sample_qty != null){
+					for(j=0; j<table[i].sample_qty; j++) {
+						//console.log(table[i]);
+						str += '<TD><input type="checkbox" name="chkbox" value="" onclick="getCheckboxValue(event)"/></TD><TD>'
+						+ cnt + '</TD><TD>'
+						+ table[i].lot_no + '</TD><TD>'
+						+ table[i].item_code + '</TD><TD>' 
+						+ table[i].insp_char + '</TD><TD>' 
+						+ table[i].insp_char_name + '</TD><TD>' 
+						+ parseInt(j+1) + '/' + table[i].sample_qty + '</TD><TD>'
+						+ '<input type="text" id="table_input" autoComplete="off" /></TD><TD>'
+						+ '<select name="result" id="table_select"><option value=""></option><option value="합격">합격</option><option value="불합격">불합격</option></TD>';
+						str += '</TR>';
+						cnt ++;
+					}
+				}else{
+					//console.log(table.);
+					//console.log(table[i].yn_f);
+					
 					str += '<TD><input type="checkbox" name="chkbox" value="" onclick="getCheckboxValue(event)"/></TD><TD>'
 					+ cnt + '</TD><TD>'
 					+ table[i].lot_no + '</TD><TD>'
 					+ table[i].item_code + '</TD><TD>' 
 					+ table[i].insp_char + '</TD><TD>' 
 					+ table[i].insp_char_name + '</TD><TD>' 
-					+ parseInt(j+1) + '/' + table[i].sample_qty + '</TD><TD>'
-					+ '<input type="text" autoComplete="off" /></TD><TD>'
-					+ '<select name="result"><option value=""></option><option value="합격">합격</option><option value="불합격">불합격</option></TD>';
+					+ table[i].sample_no + '</TD><TD>'
+					
+					//결과값
+					table[i].insp_result == null ? str += '<input type="text" id="table_input" autoComplete="off" value="" /> </TD><TD>'
+							: str += '<input type="text" id="table_input" autoComplete="off" value="' + table[i].insp_result + '" /> </TD><TD>'
+
+					//합격여부
+					if(table[i].yn_f == null) {
+						str += '<select name="result" id="table_select"><option value=""></option><option value="합격">합격</option><option value="불합격">불합격</option></TD>';
+					}else if(table[i].yn_f == "합격"){ //결과값 합격
+						str += '<select name="result" id="table_select"><option value=""></option><option value="합격" selected="selected">합격</option><option value="불합격">불합격</option></TD>';
+					}else {
+						str += '<select name="result" id="table_select"><option value=""></option><option value="합격">합격</option><option value="불합격" selected="selected">불합격</option></TD>';
+					}
 					str += '</TR>';
 					cnt ++;
 				}
@@ -468,6 +440,48 @@
 				console.log(er);
 			}
 		
+		});
+		
+		$("#btn_save").click(function(){
+			var resultList = new Array();
+			
+			$("#tbody tr").each(function() {
+				// 객체 생성
+				var data = new Object() ;
+				
+				data.lot_no = $(this).find("td").eq(2).text() ;
+				data.item_code = $(this).find("td").eq(3).text();
+				data.insp_char = $(this).find("td").eq(4).text();
+				data.insp_char_name = $(this).find("td").eq(5).text();
+				data.sample_no = $(this).find("td").eq(6).text().replace(/\/.*/g,'');
+				data.insp_result = $(this).find("#table_input").val();
+				data.yn_f = $(this).find("#table_select").val(); //.replace(/.*/g,'')
+
+				// 리스트에 생성된 객체 삽입
+				resultList.push(data) ;
+			});
+
+			// String 형태로 변환
+			var jsonData = JSON.stringify(resultList) ;
+			console.log(jsonData);
+			
+			$.ajax({
+				type : 'post',
+				url : '/lotInspResult/add',
+				beforeSend: function(xhr) {xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+				data : jsonData,
+				contentType : "application/json; charset=utf-8",
+				success : function(result, status, xhr) {
+					//if(callback) {
+					//	callback(result);
+					//}
+				},
+				error : function(xhr, status, er) {
+					//if (error) {
+					//	error(er);
+					//}
+				}
+			});
 		});
 		
 	});

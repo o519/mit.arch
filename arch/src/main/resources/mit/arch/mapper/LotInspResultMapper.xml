@@ -44,13 +44,31 @@
 		select count(*) cnt from insp_result where lot_no = #{lot_no}
 	</select>
 	
+	<select id="resultCnt" resultType="int">
+		select count(*) cnt from insp_result where lot_no = #{lot_no} and insp_char = #{insp_char} and sample_no = #{sample_no}
+	</select>
+	
 	<insert id="insertInspResult">
 		INSERT INTO insp_result(lot_no,sample_no,item_code,insp_char,insp_char_name,insp_result,yn_f)
-		VALUES(#{lot_no},#{sample_no},#{item_code},#{insp_char},#{insp_char_name},#{insp_result},#{yn_f})
+		VALUES(#{lot_no},#{sample_no},#{item_code},#{insp_char},#{insp_char_name},#{insp_result, jdbcType=FLOAT},#{yn_f})
 	</insert>
 	
 	<select id="getInspResult" resultType="mit.arch.domain.InspResultVO">
-		select * from insp_result where lot_no = #{lot_no}
+		select * from insp_result where lot_no = #{lot_no} order by insp_char, sample_no
 	</select>
+	
+	<update id="updateInspResult">
+		UPDATE insp_result
+			<trim prefix="SET" suffixOverrides=",">
+				<if test="lot_no != null">lot_no = #{lot_no},</if>
+				<if test="sample_no != null">sample_no = #{sample_no},</if>
+				<if test="item_code != null">item_code = #{item_code},</if>
+				<if test="insp_char != null">insp_char = #{insp_char},</if>
+				<if test="insp_char_name != null">insp_char_name = #{insp_char_name},</if>
+				<if test="insp_result != null">insp_result = #{insp_result},</if>
+				<if test="yn_f != null">yn_f = #{yn_f},</if>
+			</trim>
+		WHERE lot_no = #{lot_no} and insp_char = #{insp_char} and sample_no = #{sample_no}
+	</update>
  
 </mapper>

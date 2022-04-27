@@ -55,6 +55,20 @@ public class LotInspResultMapperTests {
 		
 		int count = mapper.updateLot(lot);
 		log.info("업데이트 수 : " + count);
+	}
+	
+	@Test
+	public void testUpdateInspResult() {
+		InspResultVO insp = new InspResultVO();
+		insp.setLot_no("L20220427-0002");
+		insp.setInsp_char("insp_char03");
+		insp.setSample_no(1);
+		insp.setInsp_result(3.7);
+		insp.setYn_f("합격");
+		
+		int count = mapper.updateInspResult(insp);
+		log.info("업데이트 수 : " + count);
+		
 		
 	}
 	

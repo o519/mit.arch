@@ -48,7 +48,7 @@ public class LotInspResultServiceImpl implements LotInspResultService {
 		log.info(mapper.lotCnt(lot_no));
 		if(mapper.lotCnt(lot_no) == 0) {
 		//2-1. 등록이 안되있으며 기존처럼 등록화면 여부 보내고
-			log.info(mapper.getSampleList(lot_no));
+			//log.info(mapper.getSampleList(lot_no));
 			return mapper.getSampleList(lot_no);
 		}else {
 		//2-2. 등록이 되있으면 다가져와서 보내고
@@ -83,5 +83,16 @@ public class LotInspResultServiceImpl implements LotInspResultService {
 	@Override
 	public List<InspResultVO> getInspResult(String lot_no) {
 		return mapper.getInspResult(lot_no);
+	}
+
+	@Override
+	public int updateInspResult(InspResultVO result) {
+		return mapper.updateInspResult(result);
+	}
+
+	@Override
+	public int resultCnt(String lot_no, String insp_char, Integer sample_no) {
+		// TODO Auto-generated method stub
+		return mapper.resultCnt(lot_no, insp_char, sample_no);
 	}
 }
