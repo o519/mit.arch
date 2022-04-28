@@ -57,11 +57,11 @@
 
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" name="username" placeholder="아이디" autocomplete='off'>
-      <label for="floatingInput">아이디</label>
+      <label for="floatingInput">아이디(mit)</label>
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="비밀번호">
-      <label for="floatingPassword">비밀번호</label>
+      <label for="floatingPassword">비밀번호(mit)</label>
     </div>
 
     <div class="checkbox mb-3">
